@@ -100,6 +100,7 @@ return require('packer').startup(function(use)
     use("lifepillar/vim-gruvbox8")
     use("tomasiser/vim-code-dark")
     use("folke/tokyonight.nvim")
+    use("joshdick/onedark.vim")
 
     -- lua line
     use {
@@ -139,12 +140,7 @@ return require('packer').startup(function(use)
     }
 
     -- menu
-    use {
-        'goolord/alpha-nvim',
-        config = function()
-            require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
-        end
-    }
+    use ('goolord/alpha-nvim')
 
     -- file manager
     use {
