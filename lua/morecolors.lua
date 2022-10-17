@@ -66,15 +66,16 @@ bg("BufferLineFill", darker(bgcolor, 20))
 fg("Search", fgcolor)
 bg("Search", darker(bgcolor, -20))
 
-fg("DiagnosticWarn", darker(orange, 5))
-fg("DiagnosticHint", darker(fgcolor, -5))
-fg("DiagnosticError", darker(red, -5))
-fg("DiagnosticInfo", darker(blue, -5))
+hi("DiagnosticWarn", darker(orange, 5), "transparent")
+hi("DiagnosticHint", darker(fgcolor, -5), "transparent")
+hi("DiagnosticError", darker(red, -5), "transparent")
+hi("DiagnosticInfo", darker(blue, -5), "transparent")
 
-hi('GitSignsAdd   ', green, bgcolor)
-hi('GitSignsChange', blue, bgcolor)
-hi('GitSignsDelete', red, bgcolor)
-hi('GitSignsDelete', red, bgcolor)
+
+hi('GitSignsAdd   ', green, "transparent")
+hi('GitSignsChange', blue, "transparent")
+hi('GitSignsDelete', red, "transparent")
+hi('GitSignsDelete', red, "transparent")
 
 -- fg('lualine_b_diff_added_normal', green)
 -- fg('lualine_b_diff_modified_normal', blue)
@@ -86,6 +87,27 @@ style("Function", "bold")
 
 -- Treesitter
 fg('@variable', getFg('@field'))
+
+-- Treesitter legacy (needed for some plugins)
+fg('TSBoolean', getFg('@boolean'))
+fg('TSCharacter', getFg('@character'))
+fg('TSComment', getFg('@comment'))
+fg('TSConditional', getFg('@conditional'))
+fg('TSConstant', getFg('@constant'))
+fg('TSType', getFg('@type'))
+fg('TSField', getFg('@field'))
+fg('TSFunction', getFg('@function'))
+fg('TSString', getFg('@string'))
+fg('TSKeyword', getFg('@keyword'))
+fg('TSInclude', getFg('@include'))
+
+-- LspSaga
+fg('LspSagaHoverBorder', yellow)
+fg('LspSagaRenameBorder', magenta)
+hi('LspSagaLightBulb', fgcolor, "transparent")
+fg('LspSagaCodeActionBorder', magenta)
+fg('LspSagaCodeActionContent', blue)
+fg('LspSagaCodeActionContent', blue)
 
 M.bgcolor = bgcolor
 M.fgcolor = fgcolor
