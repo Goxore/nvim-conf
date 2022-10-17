@@ -97,10 +97,11 @@ return require('packer').startup(function(use)
     use("rcarriga/nvim-notify")
 
     -- oh yes!
-    use("lifepillar/vim-gruvbox8")
+    -- use("lifepillar/vim-gruvbox8")
+    use("ellisonleao/gruvbox.nvim")
     use("tomasiser/vim-code-dark")
     use("folke/tokyonight.nvim")
-    use("joshdick/onedark.vim")
+    use("navarasu/onedark.nvim")
 
     -- lua line
     use {
@@ -152,6 +153,7 @@ return require('packer').startup(function(use)
 
     -- Treesitter
     use("nvim-treesitter/nvim-treesitter")
+    use("nvim-treesitter/playground")
 
     -- Lsp
     use("neovim/nvim-lspconfig")

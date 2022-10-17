@@ -84,6 +84,8 @@ style("String", "italic")
 style("Comment", "italic")
 style("Function", "bold")
 
+-- Treesitter
+fg('@variable', getFg('@field'))
 
 M.bgcolor = bgcolor
 M.fgcolor = fgcolor

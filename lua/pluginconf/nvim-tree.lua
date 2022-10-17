@@ -15,6 +15,10 @@ nvim_tree.setup {
         enable = true,
         update_cwd = true,
     },
+    filters = {
+        dotfiles = true,
+        exclude = { ".meta", ".cs.meta" },
+    },
     renderer = {
         indent_markers = {
             enable = true,
