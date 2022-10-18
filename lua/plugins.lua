@@ -60,6 +60,11 @@ return require('packer').startup(function(use)
     use("hrsh7th/cmp-path")
     use("hrsh7th/cmp-cmdline")
 
+    -- coq
+    -- use("ms-jpq/coq_nvim")
+    -- use("ms-jpq/coq.artifacts")
+    -- use("ms-jpq/coq.thirdparty")
+
     -- null-ls
     use("jose-elias-alvarez/null-ls.nvim")
 
