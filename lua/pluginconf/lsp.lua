@@ -76,6 +76,14 @@ lsp_installer.on_server_ready(function(server)
                 capabilities=capabilities,
             }
         -- end
+    elseif server.name == "clangd" then
+        server:setup
+        {
+            cmd = {"clangd", "--all-scopes-completion", "-tweaks='-ferror-limit 0'"},
+            -- root_dir = require'lspconfig'.util.root_pattern(".root"),
+            on_attach=on_attach,
+            capabilities=capabilities,
+        }
     elseif server.name == "sumneko_lua" then
         server:setup {
             settings = {

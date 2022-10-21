@@ -10,7 +10,6 @@ o.laststatus = 3
 o.hlsearch = true
 o.incsearch = true
 o.ignorecase = true
-o.scrolloff = 12
 o.relativenumber = true
 o.wrap = false
 o.clipboard = "unnamedplus"
@@ -24,10 +23,9 @@ o.termguicolors = true
 o.mouse = "a"
 o.splitbelow = true
 o.splitright = true
-o.scrolloff = 5
+o.scrolloff = 9
+-- o.scroll = 10
 o.signcolumn = "yes"
-g.OmniSharp_server_use_mono = 1
--- g.laststatus = 3
 
 -- vim.lsp.set_log_level("debug")
 
@@ -35,6 +33,7 @@ g.OmniSharp_server_use_mono = 1
 vim.cmd [[
 set nobackup
 set nowritebackup
+set scroll=10
 vnoremap < <gv
 vnoremap > >gv
 nnoremap gx <CMD>execute '!xdg-open ' .. shellescape(expand('<cfile>'), v:true)<CR>

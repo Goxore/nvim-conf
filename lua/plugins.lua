@@ -197,6 +197,7 @@ return require('packer').startup(function(use)
 
     -- lsp and debugging
     use("mfussenegger/nvim-dap")
+    use("rcarqqqariga/nvim-dap-ui")
 
     -- rust language server improvements
     use("simrat39/rust-tools.nvim")

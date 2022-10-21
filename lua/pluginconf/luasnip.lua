@@ -58,9 +58,9 @@ vim.keymap.set({ "i", "s" }, "<c-h>", function()
 end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<C-n>", function()
-  if ls.choice_active() then
-    ls.change_choice(1)
-  end
+    if ls.choice_active() then
+        ls.change_choice(1)
+    end
 end)
 
 -- ls.snippets = {
@@ -125,8 +125,16 @@ ls.add_snippets("cs", {
 })
 
 ls.add_snippets("cs", {
-    s("dlvc", fmt("Debug.Log({}<color ={}>{}{}{}{}</color>{});",
-        { "$\"", c(1, { t(" red"), t(" blue") }), rep(2), ": {", i(2), "}", "\"" }))
+    s("dlvc", fmt("Debug.Log({}<color={}>{}{}{}{}</color>{});",
+        {
+            "$\"",
+            c(1, { t("red"), t("green"), t("blue"), t("cyan"), t("magenta") }),
+            rep(2),
+            ": {",
+            i(2),
+            "}",
+            "\""
+        }))
 })
 
 ls.add_snippets("cs", {
@@ -226,3 +234,9 @@ ls.add_snippets("cs", {
 -- 	s("dlf", {
 --     t("Debug.LogFormat(\""), i(1), t("\","), i(2), t(");")
 -- })})
+
+ls.add_snippets("cs", {
+    s("///", f(function (_, _)
+        vim.cmd("Neogen")
+    end, {}))
+})
