@@ -24,7 +24,6 @@ set laststatus=3
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 " set fillchars=fold:\ ,vert:\▎,eob:\ ,msgsep:‾
 " set fillchars=fold:\ ,vert:\ ,eob:\ ,msgsep:\ 
-
 ]]
 
 bg("SignColumn", "transparent")
@@ -52,9 +51,12 @@ bg("WinSeparator", "transparent")
 fg("WinSeparator", darker(bgcolor, -10))
 
 -- nvimTree
+--
 bg("NvimTreeNormal", darker(bgcolor, -5))
-bg("NvimTreeWinSeparator", darker(bgcolor, -5))
-fg("NvimTreeWinSeparator", darker(bgcolor, -5))
+hi("NvimTreeWinSeparator", darker(bgcolor, -5), darker(bgcolor, -5))
+
+fg("NvimTreeSpecialFile", red)
+fg("NvimTreeImageFile", yellow)
 
 fg("AlphaHeader", yellow)
 fg("AlphaButtons", green)
@@ -107,7 +109,18 @@ fg('LspSagaRenameBorder', magenta)
 hi('LspSagaLightBulb', fgcolor, "transparent")
 fg('LspSagaCodeActionBorder', magenta)
 fg('LspSagaCodeActionContent', blue)
-fg('LspSagaCodeActionContent', blue)
+fg('LspSagaSignatureHelpBorder', yellow)
+
+-- Telescope 
+fg("TelescopeBorder", red)
+fg("TelescopePromptBorder", cyan)
+fg("TelescopeResultsBorder", cyan)
+fg("TelescopePreviewBorder", cyan)
+fg("TelescopeMatching", orange)
+style("TelescopeMatching", "bold")
+fg("TelescopePromptPrefix",  green)
+-- bg("TelescopeSelection",  })
+fg("TelescopeSelectionCaret",  yellow)
 
 M.bgcolor = bgcolor
 M.fgcolor = fgcolor

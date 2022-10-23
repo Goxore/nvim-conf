@@ -7,4 +7,5 @@ end
 if (vim.fn.exists("g:neovide") == 1) then
     vim.g.neovide_refresh_rate = 220
     vim.g.neovide_scroll_animation_length = 0.3
+    vim.g.neovide_transparency = 0.8
 end

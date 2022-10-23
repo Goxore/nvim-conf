@@ -240,3 +240,9 @@ ls.add_snippets("cs", {
         vim.cmd("Neogen")
     end, {}))
 })
+
+ls.add_snippets("cs", {
+    s("List", {
+        t("List<"), i(1), t(">"), i(2), t(" = new List<"), rep(1), t(">("), i(3), t(");")
+    })
+})

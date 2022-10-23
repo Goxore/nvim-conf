@@ -1,7 +1,12 @@
 -- options
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 local pid = vim.fn.getpid()
+
+
+require("neodev").setup({
+    -- add any options here, or leave empty to use the default settings
+})
 
 -- shit
 keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
@@ -22,7 +27,8 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl',
+        '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -45,7 +51,7 @@ capabilities = { textDocument = { completion = { completionItem = { snippetSuppo
 
 lsp_installer.on_server_ready(function(server)
     local servopts = {
-        on_attach=on_attach,
+        on_attach = on_attach,
         capabilities = capabilities,
         flags = {
             debounce_text_changes = 150,
@@ -65,24 +71,24 @@ lsp_installer.on_server_ready(function(server)
         --         capabilities=capabilities,
         --     }
         -- else
-            server:setup {
-                -- use_mono = true,
-                -- cmd = {"mono", "/home/yurii/.local/share/nvim/lsp_servers/omnisharp/omnisharp-mono/OmniSharp.exe", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
-                -- cmd = {"mono", "/home/yurii/.local/share/nvim/lsp_servers/omnisharp/omnisharp-mono/OmniSharp.exe", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
-                filetypes = { "cs", "vb" },
-                -- init_options = {},
-                root_dir = require'lspconfig'.util.root_pattern("*.csproj","*.sln"),
-                on_attach=on_attach,
-                capabilities=capabilities,
-            }
+        server:setup {
+            -- use_mono = true,
+            -- cmd = {"mono", "/home/yurii/.local/share/nvim/lsp_servers/omnisharp/omnisharp-mono/OmniSharp.exe", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
+            -- cmd = {"mono", "/home/yurii/.local/share/nvim/lsp_servers/omnisharp/omnisharp-mono/OmniSharp.exe", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
+            filetypes = { "cs", "vb" },
+            -- init_options = {},
+            root_dir = require 'lspconfig'.util.root_pattern("*.csproj", "*.sln"),
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
         -- end
     elseif server.name == "clangd" then
         server:setup
         {
-            cmd = {"clangd", "--all-scopes-completion", "-tweaks='-ferror-limit 0'"},
+            cmd = { "clangd", "--all-scopes-completion", "-tweaks='-ferror-limit 0'" },
             -- root_dir = require'lspconfig'.util.root_pattern(".root"),
-            on_attach=on_attach,
-            capabilities=capabilities,
+            on_attach = on_attach,
+            capabilities = capabilities,
         }
     elseif server.name == "sumneko_lua" then
         server:setup {
@@ -104,6 +110,7 @@ lsp_installer.on_server_ready(function(server)
                     },
                     completion = {
                         enable = true,
+                        callSnippet = "Replace"
                     },
                     diagnostics = {
                         enable = true,
@@ -114,8 +121,8 @@ lsp_installer.on_server_ready(function(server)
                     }
                 }
             },
-            on_attach=on_attach,
-            capabilities=capabilities,
+            on_attach = on_attach,
+            capabilities = capabilities,
         }
     elseif server.name == "rust_analyzer" then
         local rust_opts = {

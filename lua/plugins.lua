@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
     use("hrsh7th/cmp-cmdline")
+    use("folke/neodev.nvim")
 
     -- coq
     -- use("ms-jpq/coq_nvim")
@@ -105,8 +106,6 @@ return require('packer').startup(function(use)
     -- use("lifepillar/vim-gruvbox8")
     use("ellisonleao/gruvbox.nvim")
     use("tomasiser/vim-code-dark")
-    use("folke/tokyonight.nvim")
-    use("navarasu/onedark.nvim")
 
     -- lua line
     use {
@@ -158,6 +157,7 @@ return require('packer').startup(function(use)
 
     -- Treesitter
     use("nvim-treesitter/nvim-treesitter")
+    use("nvim-treesitter/nvim-treesitter-textobjects")
     use("nvim-treesitter/playground")
 
     -- Lsp

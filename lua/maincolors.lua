@@ -1,28 +1,43 @@
-local fg = require("core").fg
-local bg = require("core").bg
-local hi = require("core").hi
-local syscolors = require("systemcolors")
-local style = require("core").style
-
 local M = {}
+local hi = require("core").hi
 
-local b00 = '#'..syscolors.base00
-local b01 = '#'..syscolors.base01
-local b02 = '#'..syscolors.base02
-local b03 = '#'..syscolors.base03
-local b04 = '#'..syscolors.base04
-local b05 = '#'..syscolors.base05
-local b06 = '#'..syscolors.base06
-local b07 = '#'..syscolors.base07
-local b08 = '#'..syscolors.base08
-local b09 = '#'..syscolors.base09
-local b0A = '#'..syscolors.base0A
-local b0B = '#'..syscolors.base0B
-local b0C = '#'..syscolors.base0C
-local b0D = '#'..syscolors.base0D
-local b0E = '#'..syscolors.base0E
-local b0F = '#'..syscolors.base0F
+M.setup = function (colors)
+local b00 = '#' .. colors.base00
+local b01 = '#' .. colors.base01
+local b02 = '#' .. colors.base02
+local b03 = '#' .. colors.base03
+local b04 = '#' .. colors.base04
+local b05 = '#' .. colors.base05
+local b06 = '#' .. colors.base06
+local b07 = '#' .. colors.base07
+local b08 = '#' .. colors.base08
+local b09 = '#' .. colors.base09
+local b0A = '#' .. colors.base0A
+local b0B = '#' .. colors.base0B
+local b0C = '#' .. colors.base0C
+local b0D = '#' .. colors.base0D
+local b0E = '#' .. colors.base0E
+local b0F = '#' .. colors.base0F
 local trs = "transparent"
+
+vim.g.terminal_color_0 =  M.base00
+vim.g.terminal_color_1 =  M.base08
+vim.g.terminal_color_2 =  M.base0B
+vim.g.terminal_color_3 =  M.base0A
+vim.g.terminal_color_4 =  M.base0D
+vim.g.terminal_color_5 =  M.base0E
+vim.g.terminal_color_6 =  M.base0C
+vim.g.terminal_color_7 =  M.base05
+vim.g.terminal_color_8 =  M.base03
+vim.g.terminal_color_9 =  M.base08
+vim.g.terminal_color_10 = M.base0B
+vim.g.terminal_color_11 = M.base0A
+vim.g.terminal_color_12 = M.base0D
+vim.g.terminal_color_13 = M.base0E
+vim.g.terminal_color_14 = M.base0C
+vim.g.terminal_color_15 = M.base07
+vim.g.terminal_color_background = vim.g.terminal_color_0
+vim.g.terminal_color_foreground = vim.g.terminal_color_5
 
 hi("Normal",        b05, b00)
 hi("Bold",          trs, trs)
@@ -106,3 +121,6 @@ hi("DiffFile",      b08, b00)
 hi("DiffNewFile",   b0B, b00)
 hi("DiffLine",      b0D, b00)
 hi("DiffRemoved",   b08, b00)
+end
+
+return M
