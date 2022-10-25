@@ -9,7 +9,12 @@ local cond = require('nvim-autopairs.conds')
 npairs.setup()
 
 npairs.add_rule(Rule("$$","$$","tex"))
+-- npairs.add_rule(Rule("=","=","vimwiki"))
 
+npairs.add_rule(
+  Rule("=", "=", "vimwiki")
+    :with_pair(cond.before_regex("^", 1))
+)
 
 -- npairs.add_rules({
 --   Rule("$", "$",{"tex", "latex"})
@@ -23,8 +28,8 @@ npairs.add_rule(Rule("$$","$$","tex"))
 --     :with_del(cond.not_after_regex("xx"))
 --     -- disable adding a newline when you press <cr>
 --     :with_cr(cond.none())
---   },
+--   }
 --   -- disable for .vim files, but it work for another filetypes
---   Rule("a","a","-vim")
+--   -- Rule("a","a","-vim")
 -- )
 

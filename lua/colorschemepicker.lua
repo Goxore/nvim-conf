@@ -24,6 +24,7 @@ local function enter(prompt_bufnr)
     local selected = action_state.get_selected_entry()
 
     setup(require("colorscheme_colors." .. selected[1]))
+    require("morecolors").update()
     actions.close(prompt_bufnr)
 end
 

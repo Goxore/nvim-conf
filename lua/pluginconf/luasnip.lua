@@ -171,16 +171,6 @@ ls.add_snippets("cs", {
     })
 })
 
-
--- ls.add_snippets("cs", {
--- s("dlc", fmt("Debug.Log(\"<color={}>\" + {} + \"</color>\");",
--- {
---     c(1, { t("red"), t("green"), t("blue") }),
---     i(1)
--- }))
--- })
-
-
 ls.add_snippets("cs", {
     s("uc", {
         t("using System.Collections;"),
@@ -229,11 +219,6 @@ ls.add_snippets("cs", {
         t("Debug.Log("), i(1), t(");")
     })
 })
-
--- ls.add_snippets("cs", {
--- 	s("dlf", {
---     t("Debug.LogFormat(\""), i(1), t("\","), i(2), t(");")
--- })})
 
 ls.add_snippets("cs", {
     s("///", f(function (_, _)

@@ -9,6 +9,8 @@ local style = require("core").style
 
 local M = {}
 
+function M.update()
+
 local bgcolor = require("core").getBg("Normal")
 local fgcolor = require("core").getFg("Normal")
 local orange = require("core").getFg("Special")
@@ -122,14 +124,17 @@ fg("TelescopePromptPrefix",  green)
 -- bg("TelescopeSelection",  })
 fg("TelescopeSelectionCaret",  yellow)
 
-M.bgcolor = bgcolor
-M.fgcolor = fgcolor
-M.orange = orange
-M.red = red
-M.green = green
-M.blue = blue
-M.cyan = cyan
-M.yellow = yellow
-M.magenta = magenta
+end
+
+M.update()
+-- M.bgcolor = require("core").getBg("Normal")
+-- M.fgcolor = require("core").getFg("Normal")
+-- M.orange = require("core").getFg("Special")
+-- M.red = require("core").getFg("Keyword")
+-- M.green = require("core").getFg("Function")
+-- M.blue = require("core").getFg("Conceal")
+-- M.cyan = require("core").getFg("Identifier")
+-- M.yellow = require("core").getFg("Type")
+-- M.magenta = require("core").getFg("Boolean")
 
 return M

@@ -1,6 +1,6 @@
 local status_ok, toggleterm = pcall(require, "toggleterm")
 
-local colors = require("morecolors")
+-- local colors = require("morecolors")
 local core = require("core")
 
 local keymap = vim.api.nvim_set_keymap
@@ -18,9 +18,9 @@ toggleterm.setup{
     border = 'curved'
   },
   highlights = {
-    Normal = {
-      guibg = core.darker(colors.bgcolor, 10)
-    },
+    -- Normal = {
+    --   guibg = core.darker(colors.bgcolor, 10)
+    -- },
     NormalFloat = {
       link = 'Normal'
     },
