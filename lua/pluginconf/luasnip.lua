@@ -221,6 +221,18 @@ ls.add_snippets("cs", {
 })
 
 ls.add_snippets("cs", {
+    s("dl-", {
+        t("Debug.Log(\"--------------------- "), i(1), t(" ---------------------\");")
+    })
+})
+
+ls.add_snippets("cs", {
+    s("dld", {
+        t([[Debug.Log("------------------------------------------");]])
+    })
+})
+
+ls.add_snippets("cs", {
     s("///", f(function (_, _)
         vim.cmd("Neogen")
     end, {}))
