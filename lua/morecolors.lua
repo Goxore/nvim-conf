@@ -124,6 +124,13 @@ fg("TelescopePromptPrefix",  green)
 -- bg("TelescopeSelection",  })
 fg("TelescopeSelectionCaret",  yellow)
 
+-- Vimwiki
+fg("VimwikiMarkers", blue)
+fg("VimwikiHeader1", yellow)
+fg("VimwikiHeader2", magenta)
+fg("VimwikiHeader3", red)
+fg("VimwikiLink", green)
+
 end
 
 M.update()

@@ -29,6 +29,7 @@ require("pluginconf.null-ls")
 require("pluginconf.gitsigns")
 require("pluginconf.lsp-signature")
 require("pluginconf.lspsaga")
+require("pluginconf.vimwiki")
 
 -- require("other.test")
 

@@ -211,6 +211,9 @@ return require('packer').startup(function(use)
     -- vim autoformatter
     use("vim-autoformat/vim-autoformat")
 
+    -- luapad
+    use("rafcamlet/nvim-luapad")
+
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
