@@ -71,18 +71,26 @@ lsp_installer.on_server_ready(function(server)
         --         capabilities=capabilities,
         --     }
         -- else
-        server:setup {
-            -- use_mono = true,
-            -- cmd = {"mono", "/home/yurii/.local/share/nvim/lsp_servers/omnisharp/omnisharp-mono/OmniSharp.exe", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
-            -- cmd = {"mono", "/home/yurii/.local/share/nvim/lsp_servers/omnisharp/omnisharp-mono/OmniSharp.exe", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
-            cmd = {"omnisarp.exe", "--languageserver", "--hostPID", tostring(vim.fn.getpid())},
-            filetypes = { "cs", "vb" },
-            -- init_options = {},
-            root_dir = require 'lspconfig'.util.root_pattern("*.csproj", "*.sln"),
-            on_attach = on_attach,
-            capabilities = capabilities,
-        }
-        -- end
+
+        if (vim.loop.os_uname().sysname == "Linux") then
+            server:setup {
+                -- use_mono = true,
+                -- cmd = {"mono", "/home/yurii/.local/share/nvim/lsp_servers/omnisharp/omnisharp-mono/OmniSharp.exe", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
+                cmd = { "omnisarp.exe", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+                filetypes = { "cs", "vb" },
+                root_dir = require 'lspconfig'.util.root_pattern("*.csproj", "*.sln"),
+                on_attach = on_attach,
+                capabilities = capabilities,
+            }
+        else
+            server:setup {
+                cmd = { "omnisarp.exe", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+                filetypes = { "cs", "vb" },
+                root_dir = require 'lspconfig'.util.root_pattern("*.csproj", "*.sln"),
+                on_attach = on_attach,
+                capabilities = capabilities,
+            }
+        end
     elseif server.name == "clangd" then
         server:setup
         {

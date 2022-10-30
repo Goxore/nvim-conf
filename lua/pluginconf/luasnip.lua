@@ -45,13 +45,13 @@ ls.config.set_config({
     end,
 })
 
-vim.keymap.set({ "i", "s" }, "<c-l>", function()
+vim.keymap.set({ "i", "s" }, "<C-l>", function()
     if ls.expand_or_jumpable() then
         ls.expand_or_jump()
     end
 end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<c-h>", function()
+vim.keymap.set({ "i", "s" }, "<C-h>", function()
     if ls.jumpable(-1) then
         ls.jump(-1)
     end
@@ -174,7 +174,6 @@ ls.add_snippets("cs", {
 ls.add_snippets("cs", {
     s("uc", {
         t("using System.Collections;"),
-        -- t({"","\t"}),
         t({ "", "" }),
         t("using System.Collections.Generic;"),
         t({ "", "" }),
@@ -191,28 +190,36 @@ ls.add_snippets("cs", {
     })
 })
 
-ls.add_snippets("cs", {
-    s("//--", {
-        t("// ------------------------------------------")
-    })
-}
-    , {
-    type = "autosnippets",
-    key = "cs",
-}
-)
 
+local function text_present(args, _, _)
 
-ls.add_snippets("cs", {
-    s("//- ", {
-        t("// --------------------- "), i(1), t(" ---------------------")
-    })
-}
-    , {
-    type = "autosnippets",
-    key = "cs",
-}
-)
+    local arg_length = string.len(args[1][1])
+
+    if (arg_length > 0) then
+        return (" ")
+    else
+        return ("-")
+    end
+end
+
+local function cslinefn(args, _, _)
+
+    local arg_length = string.len(args[1][1])
+    local newstring = ""
+
+    if (arg_length == 0) then
+        for _ = 0, 40, 1 do
+            newstring = newstring .. '-'
+        end
+        return newstring
+    end
+
+    for _ = 0, (39 - arg_length), 1 do
+        newstring = newstring .. '-'
+    end
+
+    return (" " .. newstring)
+end
 
 ls.add_snippets("cs", {
     s("dl", {
@@ -220,26 +227,74 @@ ls.add_snippets("cs", {
     })
 })
 
+
 ls.add_snippets("cs", {
-    s("dl-", {
-        t("Debug.Log(\"--------------------- "), i(1), t(" ---------------------\");")
+    s("h1", {
+        t("// ----"),f(text_present, {1}), i(1), f(cslinefn, { 1 }),
     })
 })
 
 ls.add_snippets("cs", {
-    s("dld", {
-        t([[Debug.Log("------------------------------------------");]])
+    s("dh1", {
+        t("Debug.Log(\"----"), f(text_present, {1}), i(1), f(cslinefn, { 1 }), t("\");")
     })
 })
 
 ls.add_snippets("cs", {
-    s("///", f(function (_, _)
+    s("///", f(function(_, _)
         vim.cmd("Neogen")
     end, {}))
 })
 
 ls.add_snippets("cs", {
     s("List", {
-        t("List<"), i(1), t(">"), i(2), t(" = new List<"), rep(1), t(">("), i(3), t(");")
+        t("List<"), i(1), t("> "), i(2, "list"), t(" = new List<"), rep(1), t(">("), i(3), t(");")
+    })
+})
+
+-- vimWiki
+local function fn(args, _, _)
+
+    local arg_length = string.len(args[1][1])
+    local newstring = ""
+
+    for i = 0, (41 - arg_length), 1 do
+        newstring = newstring .. '='
+    end
+
+    if (args[1][1]:sub(-1) == ":") then
+        return ""
+    end
+    return (" " .. newstring .. " #")
+end
+
+ls.add_snippets("vimwiki", {
+    s("h1", {
+        t("# ===== "), i(1), f(fn, { 1 }),
+    })
+})
+
+ls.add_snippets("vimwiki", {
+    s("h2", {
+        t("## ==== "), i(1), f(fn, { 1 }),
+    })
+})
+
+ls.add_snippets("vimwiki", {
+    s("h3", {
+        t("### === "), i(1), f(fn, { 1 }),
+    })
+})
+
+
+ls.add_snippets("vimwiki", {
+    s("!f", {
+        t("!["), i(1), t("](file:"), i(2), t(")")
+    })
+})
+
+ls.add_snippets("vimwiki", {
+    s("!", {
+        t("!["), i(1), t("]("), i(2), t(")")
     })
 })

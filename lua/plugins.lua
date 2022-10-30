@@ -121,6 +121,7 @@ return require('packer').startup(function(use)
 
     -- Telescope
     use("nvim-telescope/telescope.nvim")
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- sticky context
     use 'nvim-treesitter/nvim-treesitter-context'
@@ -197,7 +198,7 @@ return require('packer').startup(function(use)
 
     -- lsp and debugging
     use("mfussenegger/nvim-dap")
-    use("rcarqqqariga/nvim-dap-ui")
+    -- use("rcarqqqariga/nvim-dap-ui")
 
     -- rust language server improvements
     use("simrat39/rust-tools.nvim")
@@ -213,6 +214,22 @@ return require('packer').startup(function(use)
 
     -- luapad
     use("rafcamlet/nvim-luapad")
+
+    -- noice 
+    -- use({
+    --   "folke/noice.nvim",
+    --   config = function()
+    --     require("noice").setup()
+    --   end,
+    --   requires = {
+    --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --     "MunifTanjim/nui.nvim",
+    --     -- OPTIONAL:
+    --     --   `nvim-notify` is only needed, if you want to use the notification view.
+    --     --   If not available, we use `mini` as the fallback
+    --     "rcarriga/nvim-notify",
+    --     }
+    -- })
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
