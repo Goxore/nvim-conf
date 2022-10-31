@@ -11,7 +11,8 @@ if (vim.loop.os_uname().sysname == "Linux") then
         vim.g.neovide_transparency = 0.8
     end
 else
-    M.font = "Hack NF"
+    M.font = "JetBrainsMono NF"
+    M.font_size = "12"
 
     if (vim.fn.exists("g:neovide") == 1) then
         vim.g.neovide_refresh_rate = 220
@@ -19,8 +20,6 @@ else
         vim.g.neovide_transparency = 0.95
     end
 end
-
-vim.opt.guifont = { M.font, ":h" .. M.font_size }
 
 return M
 -- vim.g.gui_font_default_size = M.font_size
