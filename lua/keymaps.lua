@@ -90,3 +90,6 @@ keymap("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+
+-- Special
+keymap("n", "<leader>yp", "<cmd>:let @+ = expand('%:p')<CR>", opts)

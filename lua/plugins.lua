@@ -215,6 +215,9 @@ return require('packer').startup(function(use)
     -- luapad
     use("rafcamlet/nvim-luapad")
 
+    -- test 
+    use("uga-rosa/translate.nvim")
+
     -- noice 
     -- use({
     --   "folke/noice.nvim",
