@@ -1,4 +1,5 @@
 local opts = { noremap = true, silent = true }
+local optsnowait = { noremap = true, silent = true, nowait = true }
 
 local keymap = vim.api.nvim_set_keymap
 
@@ -12,6 +13,7 @@ keymap("n", "<A-h>", "<C-w>h", opts)
 keymap("n", "<A-j>", "<C-w>j", opts)
 keymap("n", "<A-k>", "<C-w>k", opts)
 keymap("n", "<A-l>", "<C-w>l", opts)
+keymap('n', "<A-f>", "<cmd>WindowsMaximize<CR>", opts)
 
 keymap("n", "<C-Left>",  "<cmd>wincmd h <CR>", opts)
 keymap("n", "<C-Right>", "<cmd>wincmd l <CR>", opts)
@@ -48,6 +50,7 @@ keymap("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>", opts)
 
 --close Buffer
 keymap("n", "<C-w>", "<cmd>bd<CR>", opts)
+-- keymap("n", "<C-w>", "<cmd>NeoNoNameBufferline<CR>", optsnowait)
 
 -- Resize windows
 keymap("n", "<A-C-h>", ":vertical resize -2<CR>", opts)

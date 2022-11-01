@@ -116,12 +116,22 @@ return require('packer').startup(function(use)
     -- bufferline
     use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons' }
 
+    -- better buffer delete
+    -- use {
+    --   'nyngwang/NeoNoName.lua',
+    --   config = function ()
+    --     -- vim.keymap.set('n', '<C-w>', function () vim.cmd('NeoNoName') end, {slient=true, noremap=true, nowait=true})
+    --     -- If you are using bufferline.nvim
+    --     -- vim.keymap.set('n', '<C-w>', function () vim.cmd('NeoNoNameBufferline') end, {slient=true, noremap=true, nowait=true})
+    --   end
+    -- }
+
     -- icons
     use("ryanoasis/vim-devicons")
 
     -- Telescope
     use("nvim-telescope/telescope.nvim")
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- sticky context
     use 'nvim-treesitter/nvim-treesitter-context'
@@ -146,7 +156,7 @@ return require('packer').startup(function(use)
     }
 
     -- menu
-    use ('goolord/alpha-nvim')
+    use('goolord/alpha-nvim')
 
     -- file manager
     use {
@@ -168,10 +178,10 @@ return require('packer').startup(function(use)
     use("glepnir/lspsaga.nvim")
 
     -- generate documentation
-    use{
+    use {
         "danymat/neogen",
-        config = function ()
-            require("neogen").setup{
+        config = function()
+            require("neogen").setup {
                 enabled = true,
                 languages = {
                     cs = {
@@ -215,10 +225,24 @@ return require('packer').startup(function(use)
     -- luapad
     use("rafcamlet/nvim-luapad")
 
-    -- test 
+    -- transtaion plugin
     use("uga-rosa/translate.nvim")
 
-    -- noice 
+    -- lsp fidget
+    -- use { "j-hui/fidget.nvim",
+    --     config = function()
+    --         require "fidget".setup {}
+    --     end
+    -- }
+
+    use { "anuvyklack/windows.nvim",
+       requires = "anuvyklack/middleclass",
+       config = function()
+          require('windows').setup()
+       end
+    }
+
+    -- noice
     -- use({
     --   "folke/noice.nvim",
     --   config = function()

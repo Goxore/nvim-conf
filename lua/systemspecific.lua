@@ -1,10 +1,11 @@
 M = {
-    font = "Hack Nerd Font",
+    -- font = "Hack Nerd Font",
+    font = "JetBrainsMono Nerd Font",
     font_size = 11.5
 }
 
 if (vim.loop.os_uname().sysname == "Linux") then
-    M.font = "Hack Nerd Font"
+    M.font = "JetBrainsMono Nerd Font"
     if (vim.fn.exists("g:neovide") == 1) then
         vim.g.neovide_refresh_rate = 220
         vim.g.neovide_scroll_animation_length = 0.3
@@ -20,6 +21,8 @@ else
         vim.g.neovide_transparency = 0.95
     end
 end
+
+vim.opt.guifont = { M.font, ":h" .. M.font_size }
 
 return M
 -- vim.g.gui_font_default_size = M.font_size
