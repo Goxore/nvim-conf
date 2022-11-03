@@ -15,6 +15,14 @@ else
     M.font = "JetBrainsMono NF"
     M.font_size = "12"
 
+    vim.cmd [[
+        let &shell = has('win32') ? 'powershell' : 'pwsh'
+        let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+        let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+        let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+        set shellquote= shellxquote=
+    ]]
+
     if (vim.fn.exists("g:neovide") == 1) then
         vim.g.neovide_refresh_rate = 220
         vim.g.neovide_scroll_animation_length = 0.3
