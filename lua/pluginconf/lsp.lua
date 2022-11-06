@@ -1,3 +1,7 @@
+local lsp_installer_status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not lsp_installer_status_ok then
+  return
+end
 -- options
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
@@ -45,8 +49,6 @@ sign define DiagnosticSignInfo text=▌ texthl=DiagnosticSignInfo linehl= numhl=
 sign define DiagnosticSignHint text=▌ texthl=DiagnosticSignHint linehl= numhl=
 ]]
 
-local lsp_installer = require("nvim-lsp-installer")
-
 capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } }
 
 lsp_installer.on_server_ready(function(server)
@@ -69,7 +71,7 @@ lsp_installer.on_server_ready(function(server)
         --         root_dir = require'lspconfig'.util.root_pattern("*.csproj","*.sln"),
         --         on_attach=on_attach,
         --         capabilities=capabilities,
-        --     }
+
         -- else
 
         if (vim.loop.os_uname().sysname == "Linux") then

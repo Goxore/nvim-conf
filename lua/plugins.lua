@@ -195,7 +195,12 @@ return require('packer').startup(function(use)
     }
 
     -- lsp installer
-    use("williamboman/nvim-lsp-installer")
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    }
+    -- use("williamboman/nvim-lsp-installer")
 
     -- syntax oy .yuck
     use("elkowar/yuck.vim")
@@ -236,7 +241,7 @@ return require('packer').startup(function(use)
     -- }
 
     use { "anuvyklack/windows.nvim",
-       reqquires = "anuvyklack/middleclass",
+       requires = "anuvyklack/middleclass",
        config = function()
             require("windows").setup({
                autowidth = {			--		       |windows.autowidth|
@@ -259,6 +264,13 @@ return require('packer').startup(function(use)
             })
        end
     }
+
+    -- use {
+    --     "folke/which-key.nvim",
+    --     config = function()
+    --         require("which-key").setup {}
+    --     end
+    -- }
 
     -- noice
     -- use({
