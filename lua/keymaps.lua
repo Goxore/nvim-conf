@@ -15,10 +15,10 @@ keymap("n", "<A-k>", "<C-w>k", opts)
 keymap("n", "<A-l>", "<C-w>l", opts)
 keymap('n', "<A-f>", "<cmd>WindowsMaximize<CR>", opts)
 
-keymap("n", "<C-Left>",  "<cmd>wincmd h <CR>", opts)
-keymap("n", "<C-Right>", "<cmd>wincmd l <CR>", opts)
-keymap("n", "<C-Up>",    "<cmd>wincmd k <CR>", opts)
-keymap("n", "<C-Down>",  "<cmd>wincmd j <CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 
 keymap("n", "<esc><esc>", "<cmd>:noh<return>", opts)
 

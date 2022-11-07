@@ -26,6 +26,13 @@ local on_attach = function(client, bufnr)
     bufmap(bufnr, 'n', 'gE', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
     bufmap(bufnr, 'n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
     bufmap(bufnr, 'n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+    bufmap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    bufmap(bufnr, 'n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+end
+
+local omnisharp_on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    bufmap(bufnr, 'n', 'gd', "<cmd>lua require('omnisharp_extended').lsp_definitions()<cr>", opts)
 end
 
 require("mason-lspconfig").setup_handlers({
@@ -46,9 +53,12 @@ require("mason-lspconfig").setup_handlers({
 
     ["omnisharp"] = function()
         lspconfig.omnisharp.setup {
+            handlers = {
+                ["textDocument/definition"] = require('omnisharp_extended').handler,
+            },
             filetypes = { "cs", "vb" },
             root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln"),
-            on_attach = on_attach,
+            on_attach = omnisharp_on_attach,
             capabilities = capabilities,
         }
     end,

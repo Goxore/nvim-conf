@@ -91,6 +91,10 @@ function M.update()
 
     -- Treesitter
     fg('@variable', getFg('@field'))
+    fg('@tag', red)
+    fg('@tag.delimiter', red)
+    fg('@text', fgcolor)
+    fg('@none', fgcolor)
 
     -- Treesitter legacy (needed for some plugins)
     fg('TSBoolean', getFg('@boolean'))

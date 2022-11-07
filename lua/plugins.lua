@@ -198,8 +198,11 @@ return require('packer').startup(function(use)
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
     }
+
+    -- omnisharp
+    use("Hoffs/omnisharp-extended-lsp.nvim")
+
     -- use("williamboman/nvim-lsp-installer")
 
     -- syntax oy .yuck
@@ -240,30 +243,30 @@ return require('packer').startup(function(use)
     --     end
     -- }
 
-    use { "anuvyklack/windows.nvim",
-       requires = "anuvyklack/middleclass",
-       config = function()
-            require("windows").setup({
-               autowidth = {			--		       |windows.autowidth|
-                  enable = true,
-                  winwidth = 13,			--		        |windows.winwidth|
-                  filetype = {			--	      |windows.autowidth.filetype|
-                     help = 2,
-                  },
-               },
-               ignore = {				--			  |windows.ignore|
-                  buftype = { "quickfix" },
-                  filetype = { "NvimTree", "neo-tree", "undotree", "gundo" }
-               },
-               animation = {
-                  enable = true,
-                  duration = 300,
-                  fps = 30,
-                  easing = "in_out_sine"
-               }
-            })
-       end
-    }
+    -- use { "anuvyklack/windows.nvim",
+    --    requires = "anuvyklack/middleclass",
+    --    config = function()
+    --         require("windows").setup({
+    --            autowidth = {			--		       |windows.autowidth|
+    --               enable = true,
+    --               winwidth = 13,			--		        |windows.winwidth|
+    --               filetype = {			--	      |windows.autowidth.filetype|
+    --                  help = 2,
+    --               },
+    --            },
+    --            ignore = {				--			  |windows.ignore|
+    --               buftype = { "quickfix" },
+    --               filetype = { "NvimTree", "neo-tree", "undotree", "gundo" }
+    --            },
+    --            animation = {
+    --               enable = true,
+    --               duration = 300,
+    --               fps = 30,
+    --               easing = "in_out_sine"
+    --            }
+    --         })
+    --    end
+    -- }
 
     -- use {
     --     "folke/which-key.nvim",
