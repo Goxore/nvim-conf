@@ -230,13 +230,13 @@ ls.add_snippets("cs", {
 
 ls.add_snippets("cs", {
     s("h1", {
-        t("// ----"),f(text_present, {1}), i(1), f(cslinefn, { 1 }),
+        t("// ----"), f(text_present, { 1 }), i(1), f(cslinefn, { 1 }),
     })
 })
 
 ls.add_snippets("cs", {
     s("dh1", {
-        t("Debug.Log(\"----"), f(text_present, {1}), i(1), f(cslinefn, { 1 }), t("\");")
+        t("Debug.Log(\"----"), f(text_present, { 1 }), i(1), f(cslinefn, { 1 }), t("\");")
     })
 })
 
@@ -296,5 +296,82 @@ ls.add_snippets("vimwiki", {
 ls.add_snippets("vimwiki", {
     s("!", {
         t("!["), i(1), t("]("), i(2), t(")")
+    })
+})
+
+-- NEW STUFF
+
+local function smart_heading(args, _, user_args)
+
+    local text_length = string.len(args[1][1])
+    local newstring = ""
+
+    if user_args.compensate == true then
+        local is_even = text_length - math.floor(text_length / 2) * 2
+        if is_even == 1 then
+            newstring = newstring .. user_args.symbol
+        end
+    end
+
+    for _ = 0, ((user_args.count - text_length) / 2 - 3), 1 do
+        newstring = newstring .. user_args.symbol
+    end
+
+    if user_args.compensate then
+        return (' ' .. newstring .. user_args.outer)
+    else
+        return (user_args.outer .. newstring .. ' ')
+    end
+end
+
+local function smart_heading_line(args, _, user_args)
+
+    local text_length = string.len(args[1][1])
+    local newstring = ""
+
+    if text_length < user_args.count then
+        for _ = 0, (user_args.count - 1), 1 do
+            newstring = newstring .. user_args.symbol
+        end
+    else
+        for _ = 0, (text_length + 3), 1 do
+            newstring = newstring .. user_args.symbol
+        end
+    end
+
+    return (newstring)
+end
+
+ls.add_snippets("cs", {
+    s("H1", {
+        t("// "), f(smart_heading_line, { 1 }, { user_args = { { symbol = '=', count = 64 } }, }), t(" //"),
+        t({ "", "" }),
+        t("// "),
+        f(smart_heading, { 1 }, { user_args = { { compensate = false, symbol = ' ', count = 64, outer = '=' } }, }),
+        i(1),
+        f(smart_heading, { 1 }, { user_args = { { compensate = true, symbol = ' ', count = 64, outer = '=' } } }),
+        t(" //"),
+        t({ "", "" }),
+        t("// "), f(smart_heading_line, { 1 }, { user_args = { { symbol = '=', count = 64 } }, }), t(" //"),
+    })
+})
+
+ls.add_snippets("cs", {
+    s("H2", {
+        t("// "),
+        f(smart_heading, { 1 }, { user_args = { { compensate = false, symbol = '=', count = 64, outer = '=' } }, }),
+        i(1),
+        f(smart_heading, { 1 }, { user_args = { { compensate = true, symbol = '=', count = 64, outer = '=' } } }),
+        t(" //"),
+    })
+})
+
+ls.add_snippets("cs", {
+    s("H3", {
+        t("// "),
+        f(smart_heading, { 1 }, { user_args = { { compensate = false, symbol = '-', count = 64, outer = '-' } }, }),
+        i(1),
+        f(smart_heading, { 1 }, { user_args = { { compensate = true, symbol = '-', count = 64, outer = '-' } } }),
+        t(" //"),
     })
 })
