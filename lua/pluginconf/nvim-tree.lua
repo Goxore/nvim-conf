@@ -8,6 +8,8 @@ if not config_status_ok then
     return
 end
 
+-- require("nvim-web-devicons").setup()
+
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
@@ -28,35 +30,7 @@ nvim_tree.setup {
                 none = "  ",
             },
         },
-        icons = {
-            webdev_colors = true,
-        },
         root_folder_modifier = ":t",
-        -- icons = {
-        --     glyphs = {
-        --         default = "",
-        --         symlink = "",
-        --         folder = {
-        --             arrow_open = "",
-        --             arrow_closed = "",
-        --             default = "",
-        --             open = "",
-        --             empty = "",
-        --             empty_open = "",
-        --             symlink = "",
-        --             symlink_open = "",
-        --         },
-        --         git = {
-        --             unstaged = "",
-        --             staged = "S",
-        --             unmerged = "",
-        --             renamed = "➜",
-        --             untracked = "U",
-        --             deleted = "",
-        --             ignored = "◌",
-        --         },
-        --     },
-        -- },
     },
     diagnostics = {
         enable = true,
@@ -104,6 +78,9 @@ nvim_tree.setup {
             },
             custom_only = true
         },
+    },
+    git = {
+        enable = false
     },
     actions = {
         open_file = {

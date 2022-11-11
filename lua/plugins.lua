@@ -109,9 +109,10 @@ return require('packer').startup(function(use)
 
     -- lua line
     use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons'
     }
+
+    use('kyazdani42/nvim-web-devicons')
 
     -- bufferline
     use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons' }
@@ -127,7 +128,7 @@ return require('packer').startup(function(use)
     -- }
 
     -- icons
-    use("ryanoasis/vim-devicons")
+    -- use("ryanoasis/vim-devicons")
 
     -- Telescope
     use("nvim-telescope/telescope.nvim")
@@ -161,6 +162,7 @@ return require('packer').startup(function(use)
     -- file manager
     use {
         'kyazdani42/nvim-tree.lua',
+        requires = 'nvim-tree/nvim-web-devicons'
     }
 
     -- Toggle terminal
@@ -235,6 +237,25 @@ return require('packer').startup(function(use)
 
     -- transtaion plugin
     use("uga-rosa/translate.nvim")
+
+    -- sessions
+    use {
+        'rmagatti/auto-session',
+        config = function()
+            require("auto-session").setup {
+                log_level = "error",
+                auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+            }
+        end
+    }
+
+    use {
+      'rmagatti/session-lens',
+      requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+      config = function()
+        require('session-lens').setup({--[[your custom config--]]})
+      end
+    }
 
     -- lsp fidget
     -- use { "j-hui/fidget.nvim",
