@@ -135,7 +135,7 @@ return require('packer').startup(function(use)
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- sticky context
-    use 'nvim-treesitter/nvim-treesitter-context'
+    -- use 'nvim-treesitter/nvim-treesitter-context'
 
     -- LaTeX
     use("lervag/vimtex")
@@ -237,6 +237,10 @@ return require('packer').startup(function(use)
 
     -- transtaion plugin
     use("uga-rosa/translate.nvim")
+
+    -- git diff
+    use("sindrets/diffview.nvim")
+
 
     -- sessions
     -- use {
