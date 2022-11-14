@@ -120,8 +120,9 @@ ls.add_snippets("tex", {
 })
 
 -- CSharp
+
 ls.add_snippets("cs", {
-    s("dlv", fmt("Debug.Log({}{}{}{}{});", { "$\"", rep(1), ": {", i(1), "}\"" }))
+    s("dlv", fmt("Debug.LogFormat(\"<color=cyan>{{1}}</color>: {{0}}\", {}, \"{}\");", { i(1), rep(1) }))
 })
 
 ls.add_snippets("cs", {
@@ -190,6 +191,15 @@ ls.add_snippets("cs", {
     })
 })
 
+ls.add_snippets("cs", {
+    s("ud", {
+        t("using System.Collections;"),
+        t({ "", "" }),
+        t("using System.Collections.Generic;"),
+        t({ "", "" }),
+        t("using UnityEngine;"),
+    })
+})
 
 local function text_present(args, _, _)
 

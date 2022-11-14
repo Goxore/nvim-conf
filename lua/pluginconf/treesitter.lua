@@ -20,9 +20,9 @@ require 'nvim-treesitter.configs'.setup {
                 ["ab"] = "@block.outer",
                 ["ib"] = "@block.inner",
                 ["ac"] = "@class.outer",
+                ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
                 -- You can optionally set descriptions to the mappings (used in the desc parameter of
                 -- nvim_buf_set_keymap) which plugins like which-key display
-                ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
             },
             -- You can choose the select mode (default is charwise 'v')
             --
@@ -32,12 +32,12 @@ require 'nvim-treesitter.configs'.setup {
             -- and should return the mode ('v', 'V', or '<c-v>') or a table
             -- mapping query_strings to modes.
             selection_modes = {
-                ['@parameter.outer'] = 'v',
-                ['@function.outer'] = 'v',
-                ['@block.outer'] = 'v',
-                ['@block.inner'] = 'v',
-                ['@class.inner'] = 'v',
-                ['@class.outer'] = 'v',
+                ['@parameter.outer'] = 'V',
+                ['@function.outer'] = 'V',
+                ['@block.outer'] = 'V',
+                ['@block.inner'] = 'V',
+                ['@class.inner'] = 'V',
+                ['@class.outer'] = 'V',
                 -- '<c-v>', -- blockwise
                 -- 'V', -- linewise
             },
