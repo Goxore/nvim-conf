@@ -20,6 +20,4 @@ M.base0D = "#41a6b5"
 M.base0E = "#bb9af7"
 M.base0F = "#ff007c"
 
-M.green = "#9ece6a"
-
 return M
