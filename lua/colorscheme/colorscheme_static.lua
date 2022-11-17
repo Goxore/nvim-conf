@@ -7,19 +7,43 @@ local darker = require("core").darker
 local syscolors = require("systemcolors")
 local style = require("core").style
 
+GlobalColors = {}
 local M = {}
 
-function M.update()
 
-    local bgcolor = require("core").getBg("Normal")
-    local fgcolor = require("core").getFg("Normal")
-    local orange = require("core").getFg("Special")
-    local red = require("core").getFg("Keyword")
-    local green = require("core").getFg("Function")
-    local blue = require("core").getFg("Conceal")
-    local cyan = require("core").getFg("Identifier")
-    local yellow = require("core").getFg("Type")
-    local magenta = require("core").getFg("Boolean")
+function M.setup(colors)
+
+    local function tableHasKey(ifHas, ifHasNo, isBg)
+        if colors[ifHas] == nil then
+            if isBg == true then
+                return require("core").getBg(ifHasNo)
+            else
+                return require("core").getFg(ifHasNo)
+            end
+        else
+            return colors[ifHas]
+        end
+    end
+
+    local bgcolor = tableHasKey("bgcolor", "Normal", true)
+    local fgcolor = tableHasKey("fgcolor", "Normal")
+    local orange = tableHasKey("orange", "Special")
+    local red = tableHasKey("red", "Keyword")
+    local green = tableHasKey("green", "Function")
+    local blue = tableHasKey("blue", "Conceal")
+    local cyan = tableHasKey("cyan", "Identifier")
+    local yellow = tableHasKey("yellow", "Type")
+    local magenta = tableHasKey("magenta", "Boolean")
+
+    GlobalColors.bgcolor = bgcolor
+    GlobalColors.fgcolor = fgcolor
+    GlobalColors.orange  = orange
+    GlobalColors.red     = red
+    GlobalColors.green   = green
+    GlobalColors.blue    = blue
+    GlobalColors.cyan    = cyan
+    GlobalColors.yellow  = yellow
+    GlobalColors.magenta = magenta
 
     vim.cmd [[
         set laststatus=3
@@ -31,6 +55,10 @@ function M.update()
     bg("SignColumn", "transparent")
     bg("WinSeparator", "transparent")
     fg("WinSeparator", darker(bgcolor, -10))
+
+
+    fg("CmpItemAbbrDefault", fgcolor)
+    fg("CmpItemMenuDefault", fgcolor)
 
     fg("CmpItemAbbrMatch", blue)
     fg("CmpItemAbbrMatchFuzzy", magenta)
@@ -53,7 +81,6 @@ function M.update()
     fg("WinSeparator", darker(bgcolor, -10))
 
     -- nvimTree
-    --
     bg("NvimTreeNormal", darker(bgcolor, -5))
     hi("NvimTreeWinSeparator", darker(bgcolor, -5), darker(bgcolor, -5))
 
@@ -109,6 +136,11 @@ function M.update()
     fg('TSKeyword', getFg('@keyword'))
     fg('TSInclude', getFg('@include'))
 
+    -- Lsp
+    bg('LspReferenceRead', darker(bgcolor, -15))
+    bg('LspReferenceWrite', darker(bgcolor, -15))
+    bg('LspReferenceText', darker(bgcolor, -15))
+
     -- LspSaga
     fg('LspSagaHoverBorder', yellow)
     fg('LspSagaRenameBorder', magenta)
@@ -135,36 +167,52 @@ function M.update()
     fg("VimwikiHeader3", red)
     fg("VimwikiLink", green)
 
-    -- LuaLine
-    hi("lualine_a_visual", bgcolor, orange)
-    hi("lualine_a_normal", bgcolor, blue)
-    hi("lualine_a_insert", bgcolor, green)
-    hi("lualine_a_command", bgcolor, magenta)
-    hi("lualine_a_replace", bgcolor, magenta)
+    -- nicer icons
+    fg("DevIconCs", "#854cc7")
 
-    hi("lualine_b_visual", fgcolor, darker(bgcolor, -10))
-    hi("lualine_b_normal", fgcolor, darker(bgcolor, -10))
-    hi("lualine_b_insert", fgcolor, darker(bgcolor, -10))
-    hi("lualine_b_command", fgcolor, darker(bgcolor, -10))
-    hi("lualine_b_replace", fgcolor, darker(bgcolor, -10))
-
-    hi("lualine_c_visual",   fgcolor, bgcolor)
-    hi("lualine_c_normal",   fgcolor, bgcolor)
-    hi("lualine_c_insert",   fgcolor, bgcolor)
-    hi("lualine_c_command",  fgcolor, bgcolor)
-    hi("lualine_c_replace",  fgcolor, bgcolor)
-
+    require("lualine").setup{options={theme=M.lualinetheme()}}
 end
 
-M.update()
--- M.bgcolor = require("core").getBg("Normal")
--- M.fgcolor = require("core").getFg("Normal")
--- M.orange = require("core").getFg("Special")
--- M.red = require("core").getFg("Keyword")
--- M.green = require("core").getFg("Function")
--- M.blue = require("core").getFg("Conceal")
--- M.cyan = require("core").getFg("Identifier")
--- M.yellow = require("core").getFg("Type")
--- M.magenta = require("core").getFg("Boolean")
+M.lualinetheme = function()
+
+    local colors = GlobalColors
+    colors.gray = darker(GlobalColors.bgcolor, -5)
+    colors.lightgray = darker(GlobalColors.bgcolor, -15)
+    colors.darkgray = darker(GlobalColors.bgcolor, 10)
+    colors.inactivegray = darker(GlobalColors.bgcolor, 15)
+
+    return {
+        normal = {
+            a = { bg = colors.blue, fg = colors.bgcolor, gui = 'bold' },
+            b = { bg = colors.lightgray, fg = colors.fgcolor },
+            c = { bg = colors.lightgray, fg = colors.fgcolor },
+        },
+        insert = {
+            a = { bg = colors.green, fg = colors.bgcolor, gui = 'bold' },
+            b = { bg = colors.lightgray, fg = colors.fgcolor },
+            c = { bg = colors.lightgray, fg = colors.fgcolor },
+        },
+        visual = {
+            a = { bg = colors.yellow, fg = colors.bgcolor, gui = 'bold' },
+            b = { bg = colors.lightgray, fg = colors.fgcolor },
+            c = { bg = colors.lightgray, fg = colors.fgcolor },
+        },
+        replace = {
+            a = { bg = colors.red, fg = colors.bgcolor, gui = 'bold' },
+            b = { bg = colors.lightgray, fg = colors.fgcolor },
+            c = { bg = colors.bgcolor, fg = colors.fgcolor },
+        },
+        command = {
+            a = { bg = colors.magenta, fg = colors.bgcolor, gui = 'bold' },
+            b = { bg = colors.lightgray, fg = colors.fgcolor },
+            c = { bg = colors.lightgray, fg = colors.fgcolor },
+        },
+        inactive = {
+            a = { bg = colors.darkgray, fg = colors.gray, gui = 'bold' },
+            b = { bg = colors.darkgray, fg = colors.gray },
+            c = { bg = colors.darkgray, fg = colors.gray },
+        },
+    }
+end
 
 return M

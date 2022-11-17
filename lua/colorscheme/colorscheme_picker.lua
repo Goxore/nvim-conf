@@ -1,4 +1,5 @@
-local setup = require("maincolors").setup
+local setcolors = require("colorscheme.colorscheme_colors").setup
+local setstatic = require("colorscheme.colorscheme_static").setup
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local sorters = require("telescope.sorters")
@@ -23,13 +24,13 @@ local mini_layout = {
 local function enter(prompt_bufnr)
     local selected = action_state.get_selected_entry()
 
-    setup(require("colorscheme_colors." .. selected[1]))
-    require("morecolors").update()
+    setcolors(require("colorscheme.colorscheme_colors." .. selected[1]))
+    -- setstatic(require("colorscheme.colorscheme_colors." .. selected[1]))
     actions.close(prompt_bufnr)
 end
 
 local opts = {
-    finder = finders.new_table { "gruvbox", "onedark", "tokyonight", "everforest", "dracula" },
+    finder = finders.new_table { "gruvbox", "onedark", "tokyonight", "everforest", "dracula", "code", "catpuccin" },
     sorter = sorters.get_generic_fuzzy_sorter({}),
 
     attach_mappings = function(prompt_bufnr, map)

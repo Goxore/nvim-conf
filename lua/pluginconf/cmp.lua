@@ -87,8 +87,22 @@ local kind_icons = {
 cmp.setup {
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body) -- For luasnip
     end,
+  },
+  sorting = {
+    -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
   },
   mapping = {
     ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -144,6 +158,7 @@ cmp.setup {
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",
+        nvim_lua = "[api]",
         buffer = "[Buffer]",
         path = "[Path]",
       })[entry.source.name]

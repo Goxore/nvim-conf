@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
 
     -- main dependencies
     use("nvim-lua/plenary.nvim")
-    use({ "nvim-lua/popup.nvim" })
+    use("nvim-lua/popup.nvim")
 
 
     -- luasnip
@@ -134,9 +134,6 @@ return require('packer').startup(function(use)
     use("nvim-telescope/telescope.nvim")
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-    -- sticky context
-    -- use 'nvim-treesitter/nvim-treesitter-context'
-
     -- LaTeX
     use("lervag/vimtex")
     use("xuhdev/vim-latex-live-preview")
@@ -172,6 +169,7 @@ return require('packer').startup(function(use)
     use("nvim-treesitter/nvim-treesitter")
     use("nvim-treesitter/nvim-treesitter-textobjects")
     use("nvim-treesitter/playground")
+    -- use("nvim-treesitter/nvim-treesitter-context")
 
     -- Lsp
     use("neovim/nvim-lspconfig")
@@ -205,9 +203,7 @@ return require('packer').startup(function(use)
     -- omnisharp
     use("Hoffs/omnisharp-extended-lsp.nvim")
 
-    -- use("williamboman/nvim-lsp-installer")
-
-    -- syntax oy .yuck
+    -- syntax for .yuck files
     use("elkowar/yuck.vim")
 
     -- lazy loading that i don't really use although probably should
@@ -240,6 +236,27 @@ return require('packer').startup(function(use)
 
     -- git diff
     use("sindrets/diffview.nvim")
+
+    -- color stuff
+    use { "ziontee113/color-picker.nvim",
+        config = function()
+            require("color-picker").setup()
+        end,
+    }
+
+    use { "norcalli/nvim-colorizer.lua",
+        config = function()
+            require 'colorizer'.setup {
+                'css',
+                'javascript',
+                'lua',
+                html = {
+                    mode = 'foreground';
+                }
+            }
+        end,
+    }
+
 
 
     -- sessions

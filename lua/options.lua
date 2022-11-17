@@ -24,6 +24,7 @@ o.mouse = "a"
 o.splitbelow = true
 o.splitright = true
 o.scrolloff = 9
+o.cursorline = true
 -- o.scroll = 10
 o.signcolumn = "yes"
 
