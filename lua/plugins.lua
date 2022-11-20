@@ -214,7 +214,16 @@ return require('packer').startup(function(use)
 
     -- lsp and debugging
     use("mfussenegger/nvim-dap")
-    -- use("rcarqqqariga/nvim-dap-ui")
+
+    use {
+        "rcarriga/nvim-dap-ui",
+        config = function()
+            require("dapui").setup()
+        end
+    }
+    use {
+        "theHamsta/nvim-dap-virtual-text",
+    }
 
     -- rust language server improvements
     use("simrat39/rust-tools.nvim")

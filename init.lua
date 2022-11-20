@@ -30,6 +30,7 @@ require("pluginconf.gitsigns")
 require("pluginconf.lsp-signature")
 require("pluginconf.lspsaga")
 require("pluginconf.vimwiki")
+require("pluginconf.dap")
 require("pluginconf.mason")
 
 -- require("other.test")
