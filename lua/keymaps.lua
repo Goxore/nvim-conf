@@ -48,6 +48,14 @@ keymap("n", "<A-7>", "<cmd>BufferLineGoToBuffer 7<CR>", opts)
 keymap("n", "<A-8>", "<cmd>BufferLineGoToBuffer 8<CR>", opts)
 keymap("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>", opts)
 
+keymap("n", "<leader>h", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
+keymap("n", "<leader>H", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
+
+keymap("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", opts)
+keymap("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", opts)
+keymap("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", opts)
+keymap("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", opts)
+
 --close Buffer
 keymap("n", "<C-w>", "<cmd>bd<CR>", opts)
 -- keymap("n", "<C-w>", "<cmd>NeoNoNameBufferline<CR>", optsnowait)
@@ -60,16 +68,17 @@ keymap("n", "<A-C-j>", ":resize +2<CR>", opts)
 
 
 -- Nvim Tree
-keymap("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
-keymap("t", "<C-n>", [[ <C-\><C-n>:NvimTreeToggle<CR>]], opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
 keymap("n", "<leader>N", ":NvimTreeFindFile<CR>", opts)
 
--- ToggleTerm
+-- Terminal
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)
-keymap("t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
-keymap("t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
-keymap("t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+keymap("n", "<leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>t", "<cmd>lua _MYTERM_TOGGLE()<CR>", { noremap = true, silent = true })
+-- keymap("t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+-- keymap("t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+-- keymap("t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
 
 -- snippet
 keymap("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/luasnipconf.lua<CR>", opts)
@@ -93,6 +102,7 @@ keymap("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", opts)
 
 -- Special
 keymap("n", "<leader>yp", "<cmd>:let @+ = expand('%:p')<CR>", opts)

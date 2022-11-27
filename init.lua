@@ -6,7 +6,6 @@
 -- main
 require("core")
 require("options")
-require("keymaps")
 require("systemspecific")
 
 -- plugins and settings
@@ -37,6 +36,7 @@ require("pluginconf.mason")
 
 -- sourcing color scheme adjustments
 require("colorscheme.colorscheme_colors").setup(require("systemcolors"))
+require("keymaps")
 require("commands")
 
 -- needs fixing

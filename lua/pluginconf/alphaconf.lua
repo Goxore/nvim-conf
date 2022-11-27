@@ -23,9 +23,36 @@ local ascii = {
 "         ██         ",
 }
 
+local ascii_tree = {
+[[                 .!,            .!,]],
+[[                ~ 6 ~          ~ 6 ~]],
+[[           .    ' i `  .-^-.   ' i `]],
+[[         _.|,_   | |  / .-. \   | |]],
+[[          '|`   .|_|.| (-` ) | .|_|.]],
+[[          / \ ___)_(_|__`-'__|__)_(______]],
+[[         /`,o\)_______________________o_(]],
+[[        /_* ~_\[___]___[___]___[___[_[\`-.]],
+[[        / o .'\[_]___[___]___[___]_[___)`-)]],
+[[       /_,~' *_\_]                 [_[(  (]],
+[[       /`. *  *\_]                 [___\ _\]],
+[[      /   `~. o \]      ;( ( ;     [_[_]`-']],
+[[     /_ *    `~,_\    (( )( ;(;    [___] ]],
+[[     /   o  *  ~'\   /\ /\ /\ /\   [_[_] ]],
+[[    / *    .~~'  o\  ||_||_||_||   [___] ]],
+[[   /_,.~~'`    *  _\_||_||_||_||___[_[_]_]],
+[[   /`~..  o        \:::::::::::::::::::::\]],
+[[  / *   `'~..   *   \:::::::::::::::::::::\]],
+[[ /_     o    ``~~.,,_\=========\_/=========']],
+[[ /  *      *     ..~'\         _|_ .-_--.]],
+[[/*    o   _..~~`'*   o\           ( (_)  )]],
+[[`-.__.~'`'   *   ___.-'            `----']],
+[[      ":-------:"]],
+[[        \_____/]],
+}
+
 local header = {
    type = "text",
-   val = ascii,
+   val = ascii_tree,
    opts = {
       position = "center",
       hl = "AlphaHeader",
@@ -64,9 +91,9 @@ end
 local buttons = {
    type = "group",
    val = {
-      button(" n ", "  New file" , ":ene <BAR> startinsert <CR>"),
-      button(" r ", "  Recent File  ", ":Telescope oldfiles<CR>"),
+      button(" o ", "  Recent File  ", ":Telescope oldfiles<CR>"),
       button(" f ", "  Find File  ", ":Telescope find_files<CR>"),
+      button(" n ", "  New file" , ":ene <BAR> startinsert <CR>"),
       button(" w ", "  Find Word  ", ":Telescope live_grep<CR>"),
       button(" b ", "  Bookmarks  ", ":Telescope marks<CR>"),
 --    button("SPC c", "  Colorschemes  ", ":Telescope colorscheme<CR>"),

@@ -22,7 +22,7 @@ sign define DiagnosticSignHint text=▌ texthl=DiagnosticSignHint linehl= numhl=
 local on_attach = function(client, bufnr)
     bufmap(bufnr, 'n', 'gu', '<cmd>Telescope lsp_references<CR>', opts)
     bufmap(bufnr, 'n', '<space>F', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
-    bufmap(bufnr, 'n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+    bufmap(bufnr, 'n', '<space>le', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     bufmap(bufnr, 'n', 'gE', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
     bufmap(bufnr, 'n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
     bufmap(bufnr, 'n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
@@ -52,6 +52,10 @@ local omnisharp_on_attach = function(client, bufnr)
     bufmap(bufnr, 'n', 'gd', "<cmd>lua require('omnisharp_extended').lsp_definitions()<cr>", opts)
 end
 
+-- standalone lsp
+require'lspconfig'.gdscript.setup{}
+
+-- Mason lsp
 require("mason-lspconfig").setup_handlers({
 
     function(server_name)
@@ -111,6 +115,8 @@ require("mason-lspconfig").setup_handlers({
                     }
                 }
             },
+            -- because I have no idea how else I am supposed to get root dir of projects without git
+            root_dir = lspconfig.util.root_pattern(".git", ".projroot"),
             on_attach = on_attach,
             capabilities = capabilities,
         }
