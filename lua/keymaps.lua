@@ -57,14 +57,14 @@ keymap("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", opts)
 keymap("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", opts)
 
 --close Buffer
-keymap("n", "<C-w>", "<cmd>bd<CR>", opts)
+keymap("n", "<C-w>", "<cmd>BufDel<CR>", opts)
 -- keymap("n", "<C-w>", "<cmd>NeoNoNameBufferline<CR>", optsnowait)
 
 -- Resize windows
-keymap("n", "<A-C-h>", ":vertical resize -2<CR>", opts)
-keymap("n", "<A-C-l>", ":vertical resize +2<CR>", opts)
-keymap("n", "<A-C-k>", ":resize -2<CR>", opts)
-keymap("n", "<A-C-j>", ":resize +2<CR>", opts)
+keymap("n", "<C-h>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-l>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-k>", ":resize -2<CR>", opts)
+keymap("n", "<C-j>", ":resize +2<CR>", opts)
 
 
 -- Nvim Tree

@@ -116,7 +116,7 @@ return require('packer').startup(function(use)
 
     -- bufferline
     use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons' }
-    use {'ThePrimeagen/harpoon'}
+    use {'ojroques/nvim-bufdel'}
 
     -- better buffer delete
     -- use {

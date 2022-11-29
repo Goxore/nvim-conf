@@ -92,6 +92,7 @@ function M.setup(colors)
     fg("AlphaButtonsShortcut", bgcolor)
     bg("AlphaButtonsShortcut", blue)
 
+    -- bufferline
     bg("BufferLineFill", darker(bgcolor, 20))
 
     fg("Search", fgcolor)
