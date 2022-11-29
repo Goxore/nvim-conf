@@ -27,7 +27,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 ls.config.set_config({
     history = true,
-    update_events = "TextChanged,TextChangedI",
+    update_events = "InsertEnter,InsertLeave",
     delete_check_events = "TextChanged",
     ext_opts = {
         [types.choiceNode] = {
@@ -63,14 +63,8 @@ vim.keymap.set({ "i", "s" }, "<C-n>", function()
     end
 end)
 
--- ls.snippets = {
---   all = {
---     s("trigger", { t("Wow! Text!") })
---   },
---   lua = {
---     ls.parser.parse_snippet("test", "--this is $1 a test"),
---   },
--- }
+-- languages and frameworks --
+ls.add_snippets("cs", require("pluginconf.snippets.unity"))
 
 
 ls.add_snippets("all", {
@@ -80,17 +74,6 @@ ls.add_snippets("all", {
     }, { type = "autosnippets" }),
 })
 
-ls.add_snippets("lua", {
-    s("test", fmt("local {} = require('{}')", { i(1), rep(1) })),
-})
-
-
-ls.add_snippets("all", {
-    s("autotrigger", { t("autosnippet"), }),
-}, {
-    type = "autosnippets",
-    key = "all_auto",
-})
 
 ls.add_snippets("tex", {
     s("beg", {
@@ -121,85 +104,6 @@ ls.add_snippets("tex", {
 
 -- CSharp
 
-ls.add_snippets("cs", {
-    s("dlv", fmt("Debug.LogFormat(\"<color=cyan>{{1}}</color>: {{0}}\", {}, \"{}\");", { i(1), rep(1) }))
-})
-
-ls.add_snippets("cs", {
-    s("dlvc", fmt("Debug.Log({}<color={}>{}{}{}{}</color>{});",
-        {
-            "$\"",
-            c(1, { t("red"), t("green"), t("blue"), t("cyan"), t("magenta") }),
-            rep(2),
-            ": {",
-            i(2),
-            "}",
-            "\""
-        }))
-})
-
-ls.add_snippets("cs", {
-    s("scls", {
-        -- Choice: Switch between two different Nodes, first parameter is its position, second a list of nodes.
-        c(1, {
-            t("public "),
-            t("private "),
-        }),
-        t("class "),
-        i(2),
-        t(" "),
-        c(3, {
-            t("{"),
-            -- sn: Nested Snippet. Instead of a trigger, it has a position, just like insertNodes. !!! These don't expect a 0-node!!!!
-            -- Inside Choices, Nodes don't need a position as the choice node is the one being jumped to.
-            sn(nil, {
-                t("extends "),
-                -- restoreNode: stores and restores nodes.
-                -- pass position, store-key and nodes.
-                r(1, "other_class", i(1)),
-                t(" {"),
-            }),
-            sn(nil, {
-                t("implements "),
-                -- no need to define the nodes for a given key a second time.
-                r(1, "other_class"),
-                t(" {"),
-            }),
-        }),
-        t({ "", "\t" }),
-        i(0),
-        t({ "", "}" }),
-    })
-})
-
-ls.add_snippets("cs", {
-    s("uc", {
-        t("using System.Collections;"),
-        t({ "", "" }),
-        t("using System.Collections.Generic;"),
-        t({ "", "" }),
-        t("using UnityEngine;"),
-        t({ "", "" }),
-        t({ "", "" }),
-        t("public class "), i(1), t("", "\t"),
-        t({ "", "" }),
-        t("{"),
-        t({ "", "\t" }),
-        i(0),
-        t({ "", "" }),
-        t({ "}" })
-    })
-})
-
-ls.add_snippets("cs", {
-    s("ud", {
-        t("using System.Collections;"),
-        t({ "", "" }),
-        t("using System.Collections.Generic;"),
-        t({ "", "" }),
-        t("using UnityEngine;"),
-    })
-})
 
 local function text_present(args, _, _)
 
@@ -230,37 +134,6 @@ local function cslinefn(args, _, _)
 
     return (" " .. newstring)
 end
-
-ls.add_snippets("cs", {
-    s("dl", {
-        t("Debug.Log("), i(1), t(");")
-    })
-})
-
-
-ls.add_snippets("cs", {
-    s("h1", {
-        t("// ----"), f(text_present, { 1 }), i(1), f(cslinefn, { 1 }),
-    })
-})
-
-ls.add_snippets("cs", {
-    s("dh1", {
-        t("Debug.Log(\"----"), f(text_present, { 1 }), i(1), f(cslinefn, { 1 }), t("\");")
-    })
-})
-
-ls.add_snippets("cs", {
-    s("///", f(function(_, _)
-        vim.cmd("Neogen")
-    end, {}))
-})
-
-ls.add_snippets("cs", {
-    s("List", {
-        t("List<"), i(1), t("> "), i(2, "list"), t(" = new List<"), rep(1), t(">("), i(3), t(");")
-    })
-})
 
 -- vimWiki
 local function fn(args, _, _)
