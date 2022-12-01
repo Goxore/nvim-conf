@@ -10,6 +10,7 @@ require("systemspecific")
 
 -- plugins and settings
 require("plugins")
+require("impatient")
 require("pluginconf.nvim-autopairs")
 require("pluginconf.alphaconf")
 require("pluginconf.bufferline")

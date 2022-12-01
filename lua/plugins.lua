@@ -42,6 +42,10 @@ return require('packer').startup(function(use)
     -- packer
     use("wbthomason/packer.nvim")
 
+    -- numbers are good
+    use('lewis6991/impatient.nvim')
+
+
     -- main dependencies
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
@@ -93,7 +97,8 @@ return require('packer').startup(function(use)
         'simrat39/symbols-outline.nvim',
         config = function()
             require("symbols-outline").setup {}
-        end
+        end,
+        cmd = "SymbolsOutline"
     }
 
     -- nice git signs
@@ -102,20 +107,19 @@ return require('packer').startup(function(use)
     -- notifications
     use("rcarriga/nvim-notify")
 
-    -- oh yes!
-    -- use("lifepillar/vim-gruvbox8")
-    use("ellisonleao/gruvbox.nvim")
-    use("tomasiser/vim-code-dark")
-
     -- lua line
     use {
-        'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons'
+        'nvim-lualine/lualine.nvim',
+        requires = 'kyazdani42/nvim-web-devicons'
     }
 
     use('kyazdani42/nvim-web-devicons')
 
     -- bufferline
-    use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons' }
+    use { 'akinsho/nvim-bufferline.lua',
+    requires = 'kyazdani42/nvim-web-devicons' 
+    }
+
     use {'ojroques/nvim-bufdel'}
 
     -- better buffer delete
@@ -160,7 +164,8 @@ return require('packer').startup(function(use)
     -- file manager
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = 'nvim-tree/nvim-web-devicons'
+        requires = 'nvim-tree/nvim-web-devicons',
+        cmd = 'NvimTreeToggle'
     }
 
     -- Toggle terminal
@@ -192,7 +197,8 @@ return require('packer').startup(function(use)
                     }
                 }
             }
-        end
+        end,
+        cmd = "Neogen"
     }
 
     -- lsp installer
@@ -205,29 +211,38 @@ return require('packer').startup(function(use)
     use("Hoffs/omnisharp-extended-lsp.nvim")
 
     -- syntax for .yuck files
-    use("elkowar/yuck.vim")
-
-    -- lazy loading that i don't really use although probably should
-    use('lewis6991/impatient.nvim')
+    use{
+        "elkowar/yuck.vim",
+        ft = "yuck"
+    }
 
     -- lsp signatures
     use("ray-x/lsp_signature.nvim")
 
     -- lsp and debugging
-    use("mfussenegger/nvim-dap")
+    use{
+        "mfussenegger/nvim-dap",
+        -- cmd = "DapContinue"
+    }
 
     use {
         "rcarriga/nvim-dap-ui",
         config = function()
             require("dapui").setup()
-        end
+        end,
+        cmd = [[lua require("dapui").open()]]
     }
+
     use {
         "theHamsta/nvim-dap-virtual-text",
+        -- cmd = "DapContinue"
     }
 
     -- rust language server improvements
-    use("simrat39/rust-tools.nvim")
+    use{
+        "simrat39/rust-tools.nvim",
+        ft = "rust"
+    }
 
     -- inlay hints that somewhat work sometimes
     use("shurizzle/inlay-hints.nvim")
@@ -239,13 +254,22 @@ return require('packer').startup(function(use)
     use("vim-autoformat/vim-autoformat")
 
     -- luapad
-    use("rafcamlet/nvim-luapad")
+    use{
+        "rafcamlet/nvim-luapad",
+        cmd = "Luapad"
+    }
 
     -- transtaion plugin
-    use("uga-rosa/translate.nvim")
+    use{
+        "uga-rosa/translate.nvim",
+        cmd = "Translate"
+    }
 
     -- git diff
-    use("sindrets/diffview.nvim")
+    use{
+        "sindrets/diffview.nvim",
+        cmd = "DiffviewOpen"
+    }
 
     -- color stuff
     use { "ziontee113/color-picker.nvim",
@@ -267,7 +291,9 @@ return require('packer').startup(function(use)
         end,
     }
 
-
+    use {"eandrju/cellular-automaton.nvim",
+        cmd = "CellularAutomaton"
+    }
 
     -- sessions
     -- use {
