@@ -45,6 +45,23 @@ function M.setup(colors)
     GlobalColors.yellow  = yellow
     GlobalColors.magenta = magenta
 
+    vim.g.terminal_color_0 = bgcolor
+    vim.g.terminal_color_1 = red
+    vim.g.terminal_color_2 = green
+    vim.g.terminal_color_3 = yellow
+    vim.g.terminal_color_4 = blue
+    vim.g.terminal_color_5 = magenta
+    vim.g.terminal_color_6 = cyan
+    vim.g.terminal_color_7 = fg
+    vim.g.terminal_color_8 = darker(fgcolor, 10)
+    vim.g.terminal_color_9 = red
+    vim.g.terminal_color_10 = green
+    vim.g.terminal_color_11 = yellow
+    vim.g.terminal_color_12 = blue
+    vim.g.terminal_color_13 = magenta
+    vim.g.terminal_color_14 = cyan
+    vim.g.terminal_color_15 = fg
+
     vim.cmd [[
         set laststatus=3
         set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
@@ -170,6 +187,9 @@ function M.setup(colors)
 
     -- nicer icons
     fg("DevIconCs", "#854cc7")
+
+    -- fg("BufferLineNumbersSelected", blue)
+    -- fg("BufferLineBackground", blue)
 
     require("lualine").setup{options={theme=M.lualinetheme()}}
 end

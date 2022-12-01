@@ -108,17 +108,12 @@ return require('packer').startup(function(use)
     use("rcarriga/nvim-notify")
 
     -- lua line
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = 'kyazdani42/nvim-web-devicons'
-    }
+    use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
 
     use('kyazdani42/nvim-web-devicons')
 
     -- bufferline
-    use { 'akinsho/nvim-bufferline.lua',
-    requires = 'kyazdani42/nvim-web-devicons' 
-    }
+    use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons' }
 
     use {'ojroques/nvim-bufdel'}
 
@@ -136,13 +131,24 @@ return require('packer').startup(function(use)
     -- use("ryanoasis/vim-devicons")
 
     -- Telescope
-    use("nvim-telescope/telescope.nvim")
+    use ("nvim-telescope/telescope.nvim")
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- LaTeX
-    use("lervag/vimtex")
-    use("xuhdev/vim-latex-live-preview")
-    use("ferrine/md-img-paste.vim")
+    use{
+        "lervag/vimtex",
+        ft = "tex"
+    }
+
+    use{
+        "xuhdev/vim-latex-live-preview",
+        ft = "tex"
+    }
+
+    use{
+        "ferrine/md-img-paste.vim",
+        ft = { "tex", "md", "vimwiki" }
+    }
 
     -- Vim viki
     use("vimwiki/vimwiki")
@@ -165,7 +171,6 @@ return require('packer').startup(function(use)
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'nvim-tree/nvim-web-devicons',
-        cmd = 'NvimTreeToggle'
     }
 
     -- Toggle terminal
@@ -174,7 +179,11 @@ return require('packer').startup(function(use)
     -- Treesitter
     use("nvim-treesitter/nvim-treesitter")
     use("nvim-treesitter/nvim-treesitter-textobjects")
-    use("nvim-treesitter/playground")
+
+    use {
+        "nvim-treesitter/playground",
+        cmd = "TSPlaygroundToggle"
+    }
     -- use("nvim-treesitter/nvim-treesitter-context")
 
     -- Lsp
@@ -241,7 +250,7 @@ return require('packer').startup(function(use)
     -- rust language server improvements
     use{
         "simrat39/rust-tools.nvim",
-        ft = "rust"
+        -- ft = "rust"
     }
 
     -- inlay hints that somewhat work sometimes
@@ -289,6 +298,7 @@ return require('packer').startup(function(use)
                 }
             }
         end,
+        ft = { "html", "css", "javascript", "typescript", "svelte", "lua", "yaml", "xml" }
     }
 
     use {"eandrju/cellular-automaton.nvim",
@@ -321,30 +331,30 @@ return require('packer').startup(function(use)
     --     end
     -- }
 
-    -- use { "anuvyklack/windows.nvim",
-    --    requires = "anuvyklack/middleclass",
-    --    config = function()
-    --         require("windows").setup({
-    --            autowidth = {			--		       |windows.autowidth|
-    --               enable = true,
-    --               winwidth = 13,			--		        |windows.winwidth|
-    --               filetype = {			--	      |windows.autowidth.filetype|
-    --                  help = 2,
-    --               },
-    --            },
-    --            ignore = {				--			  |windows.ignore|
-    --               buftype = { "quickfix" },
-    --               filetype = { "NvimTree", "neo-tree", "undotree", "gundo" }
-    --            },
-    --            animation = {
-    --               enable = true,
-    --               duration = 300,
-    --               fps = 30,
-    --               easing = "in_out_sine"
-    --            }
-    --         })
-    --    end
-    -- }
+    use { "anuvyklack/windows.nvim",
+       requires = "anuvyklack/middleclass",
+       config = function()
+            require("windows").setup({
+               autowidth = {
+                  enable = false,
+                  winwidth = 13,
+                  filetype = {
+                     help = 2,
+                  },
+               },
+               ignore = {				--			  |windows.ignore|
+                  buftype = { "quickfix" },
+                  filetype = { "NvimTree", "neo-tree", "undotree", "gundo" }
+               },
+               -- animation = {
+               --    enable = true,
+               --    duration = 300,
+               --    fps = 30,
+               --    easing = "in_out_sine"
+               -- }
+            })
+       end
+    }
 
     -- use {
     --     "folke/which-key.nvim",

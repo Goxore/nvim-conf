@@ -4,6 +4,13 @@ local bg = require("core").bg
 local darker = require("core").darker
 
 M.setup = function(colors)
+    -- vim.cmd("hi clear")
+    -- if vim.fn.exists("syntax_on") then
+    --     vim.cmd("syntax reset")
+    -- end
+    vim.o.termguicolors = true
+    vim.g.colors_name = "nicetheme"
+
     local b00 = colors.base00
     local b01 = colors.base01
     local b02 = colors.base02

@@ -7,8 +7,6 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local transform_mod = require("telescope.actions.mt").transform_mod
 
-debugcommand = "nothing"
-
 local function multiopen(prompt_bufnr, method)
     local edit_file_cmd_map = {
         vertical = "vsplit",
@@ -67,7 +65,6 @@ local function multiopen(prompt_bufnr, method)
                 if vim.api.nvim_buf_get_name(0) ~= filename or command ~= "edit" then
                     filename = require("plenary.path"):new(vim.fn.fnameescape(filename)):normalize(vim.loop.cwd())
                     pcall(vim.cmd, string.format("%s %s", command, filename))
-                    debugcommand = string.format("%s %s", command, filename:gsub("\\\\", "\\"))
                 end
             end
 

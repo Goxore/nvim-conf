@@ -28,6 +28,8 @@ local on_attach = function(client, bufnr)
     bufmap(bufnr, 'n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
     bufmap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     bufmap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    bufmap(bufnr, 'n', '<leader>gd', '<cmd>vsplit | lua vim.lsp.buf.definition()<CR>', opts)
+    bufmap(bufnr, 'n', '<leader>gD', '<cmd>vsplit | lua vim.lsp.buf.type_definition()<CR>', opts)
 
     if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })

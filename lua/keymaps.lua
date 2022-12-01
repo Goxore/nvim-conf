@@ -74,7 +74,7 @@ keymap("n", "<leader>N", ":NvimTreeFindFile<CR>", opts)
 
 -- Terminal
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)
-keymap("n", "<leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>t", "<cmd>lua _MYTERM_TOGGLE()<CR>", { noremap = true, silent = true })
 -- keymap("t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
 -- keymap("t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
