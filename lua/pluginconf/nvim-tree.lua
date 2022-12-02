@@ -19,7 +19,7 @@ nvim_tree.setup {
     },
     filters = {
         dotfiles = true,
-        exclude = { ".meta", ".cs.meta" },
+        custom = { ".meta$", ".cs.meta$" },
     },
     renderer = {
         indent_markers = {
