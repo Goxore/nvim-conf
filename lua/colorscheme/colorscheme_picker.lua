@@ -30,7 +30,7 @@ local function enter(prompt_bufnr)
 end
 
 local opts = {
-    finder = finders.new_table { "gruvbox", "onedark", "tokyonight", "everforest", "dracula", "code", "catpuccin" },
+    finder = finders.new_table { "gruvbox", "onedark", "tokyonight", "everforest", "dracula", "code", "catpuccin", "nord" },
     sorter = sorters.get_generic_fuzzy_sorter({}),
 
     attach_mappings = function(prompt_bufnr, map)
