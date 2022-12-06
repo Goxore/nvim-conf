@@ -115,7 +115,7 @@ return require('packer').startup(function(use)
     -- bufferline
     use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons' }
 
-    use {'ojroques/nvim-bufdel'}
+    use { 'ojroques/nvim-bufdel' }
 
     -- better buffer delete
     -- use {
@@ -131,21 +131,21 @@ return require('packer').startup(function(use)
     -- use("ryanoasis/vim-devicons")
 
     -- Telescope
-    use ("nvim-telescope/telescope.nvim")
+    use("nvim-telescope/telescope.nvim")
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- LaTeX
-    use{
+    use {
         "lervag/vimtex",
         ft = "tex"
     }
 
-    use{
+    use {
         "xuhdev/vim-latex-live-preview",
         ft = "tex"
     }
 
-    use{
+    use {
         "ferrine/md-img-paste.vim",
         ft = { "tex", "md", "vimwiki" }
     }
@@ -220,7 +220,7 @@ return require('packer').startup(function(use)
     use("Hoffs/omnisharp-extended-lsp.nvim")
 
     -- syntax for .yuck files
-    use{
+    use {
         "elkowar/yuck.vim",
         ft = "yuck"
     }
@@ -229,7 +229,7 @@ return require('packer').startup(function(use)
     use("ray-x/lsp_signature.nvim")
 
     -- lsp and debugging
-    use{
+    use {
         "mfussenegger/nvim-dap",
         -- cmd = "DapContinue"
     }
@@ -248,7 +248,7 @@ return require('packer').startup(function(use)
     }
 
     -- rust language server improvements
-    use{
+    use {
         "simrat39/rust-tools.nvim",
         -- ft = "rust"
     }
@@ -263,19 +263,19 @@ return require('packer').startup(function(use)
     use("vim-autoformat/vim-autoformat")
 
     -- luapad
-    use{
+    use {
         "rafcamlet/nvim-luapad",
         cmd = "Luapad"
     }
 
     -- transtaion plugin
-    use{
+    use {
         "uga-rosa/translate.nvim",
         cmd = "Translate"
     }
 
     -- git diff
-    use{
+    use {
         "sindrets/diffview.nvim",
         cmd = "DiffviewOpen"
     }
@@ -301,8 +301,20 @@ return require('packer').startup(function(use)
         ft = { "html", "css", "javascript", "typescript", "svelte", "lua", "yaml", "xml" }
     }
 
-    use {"eandrju/cellular-automaton.nvim",
+    use { "eandrju/cellular-automaton.nvim",
         cmd = "CellularAutomaton"
+    }
+
+    use {
+        'lukas-reineke/headlines.nvim',
+        config = function()
+            require('headlines').setup {
+                markdown = {
+                    fat_headline_upper_string = "▄", -- ▃
+                    fat_headline_lower_string = "▀",
+                },
+            }
+        end,
     }
 
     -- sessions
@@ -332,7 +344,7 @@ return require('packer').startup(function(use)
     -- }
 
     use { "anuvyklack/windows.nvim",
-       requires = "anuvyklack/middleclass"
+        requires = "anuvyklack/middleclass"
     }
 
     -- use {
