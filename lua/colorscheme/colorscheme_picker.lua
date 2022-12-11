@@ -13,7 +13,7 @@ local M = {}
 local mini_layout = {
     layout_strategy = "vertical",
     layout_config = {
-        height = 10,
+        height = 15,
         width = 0.3,
         prompt_position = "top"
     },
@@ -25,7 +25,6 @@ local function enter(prompt_bufnr)
     local selected = action_state.get_selected_entry()
 
     setcolors(require("colorscheme.colorscheme_colors." .. selected[1]))
-    -- setstatic(require("colorscheme.colorscheme_colors." .. selected[1]))
     actions.close(prompt_bufnr)
 end
 

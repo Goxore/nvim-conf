@@ -41,25 +41,4 @@ require("colorscheme.colorscheme_colors").setup(require("systemcolors"))
 require("keymaps")
 require("commands")
 
--- needs fixing
-require("Comment").setup()
-
--- local dap = require('dap')
--- dap.adapters.unity = {
---     type = 'executable',
---     command = '/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono',
---     args = {'/Users/unalozyurt/.vscode/extensions/unity.unity-debug-3.0.2/bin/UnityDebug.exe'}
---   }
---   
---   dap.configurations.cs = {
---     {
---     type = 'unity',
---     request = 'attach',
---     name = 'Unity Editor',
---     program = function()
---       return 
---     end,
---     }
---   }
-
 -- vim.opt.scroll="10"

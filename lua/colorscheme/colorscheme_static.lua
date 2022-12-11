@@ -138,6 +138,7 @@ function M.setup(colors)
     fg('@variable', getFg('@field'))
     fg('@tag', red)
     fg('@tag.delimiter', red)
+    fg('@type.qualifier', red)
     fg('@text', fgcolor)
     fg('@none', fgcolor)
 

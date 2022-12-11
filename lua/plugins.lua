@@ -147,7 +147,6 @@ return require('packer').startup(function(use)
 
     use {
         "ferrine/md-img-paste.vim",
-        ft = { "tex", "md", "vimwiki" }
     }
 
     -- Vim viki

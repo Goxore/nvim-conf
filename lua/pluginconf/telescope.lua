@@ -142,39 +142,46 @@ local multi_open_mappings = {
 --     telescope_custom_actions._multiopen(prompt_bufnr, "edit")
 -- end
 
-telescope.setup{
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-h>"] = "which_key",
-        ["<C-j>"] = {
-          actions.move_selection_next, type = "action",
-          opts = { nowait = true, silent = true }
+telescope.setup {
+    defaults = {
+        mappings = {
+            i = {
+                ["<C-h>"] = "which_key",
+                ["<C-j>"] = {
+                    actions.move_selection_next, type = "action",
+                    opts = { nowait = true, silent = true }
+                },
+                ["<C-k>"] = {
+                    actions.move_selection_previous, type = "action",
+                    opts = { nowait = true, silent = true }
+                },
+                ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            }
+        }
+    },
+    pickers = {
+        find_files = {
+            mappings = multi_open_mappings
         },
-        ["<C-k>"] = {
-          actions.move_selection_previous, type = "action",
-          opts = { nowait = true, silent = true }
+        oldfiles = {
+            mappings = multi_open_mappings
         },
-        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist
-      }
+        buffers = {
+            mappings = {
+                i = {
+                    ["<C-r>"] = actions.delete_buffer
+                }
+            }
+        }
+    },
+    extensions = {
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+        }
     }
-  },
-  pickers = {
-    find_files = {
-          mappings = multi_open_mappings
-      },
-    oldfiles = {
-          mappings = multi_open_mappings
-      }
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = "smart_case",
-    }
-  }
 }
 
 telescope.load_extension('fzf')

@@ -98,11 +98,13 @@ keymap("n", "vih", "<cmd>Gitsigns select_hunk<CR>", opts)
 keymap("n", "<F2>", "<cmd>Lspsaga rename<CR>", opts)
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 keymap("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
+keymap("v", "K", "", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", opts)
+keymap("n", "<leader>b", "<cmd>Telescope buffers<CR>", opts)
 
 -- Special
 keymap("n", "<leader>yp", "<cmd>:let @+ = expand('%:p')<CR>", opts)
