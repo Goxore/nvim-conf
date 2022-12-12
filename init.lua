@@ -6,6 +6,7 @@
 -- main
 require("core")
 require("options")
+require("keymaps")
 require("systemspecific")
 
 -- plugins and settings
@@ -30,6 +31,7 @@ require("pluginconf.gitsigns")
 require("pluginconf.lsp-signature")
 require("pluginconf.lspsaga")
 require("pluginconf.windows")
+require("pluginconf.reach")
 require("pluginconf.vimwiki")
 require("pluginconf.dap")
 require("pluginconf.mason")
@@ -38,7 +40,6 @@ require("pluginconf.mason")
 
 -- sourcing color scheme adjustments
 require("colorscheme.colorscheme_colors").setup(require("systemcolors"))
-require("keymaps")
 require("commands")
 
 -- vim.opt.scroll="10"

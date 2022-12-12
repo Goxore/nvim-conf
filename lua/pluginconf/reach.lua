@@ -1,7 +1,7 @@
 require('reach').setup({
   notifications = true
 })
--- default
+
 local options = {
     handle = 'auto', -- 'bufnr' or 'dynamic' or 'auto'
     show_icons = true,
@@ -10,8 +10,7 @@ local options = {
     modified_icon = '⬤', -- Character to use as modified indicator
     grayout_current = true, -- Wheter to gray out current buffer entry
     force_delete = {}, -- List of filetypes / buftypes to use
-    -- 'bdelete!' on, e.g. { 'terminal' }
-    filter = nil, -- Function taking bufnr as parameter,
+    -- 'bdelete!' on, e.g. { 'terminal' } filter = nil, -- Function taking bufnr as parameter,
     -- returning true or false
     sort = nil, -- Comparator function (bufnr, bufnr) -> bool
     terminal_char = '\\', -- Character to use for terminal buffer handles
@@ -34,10 +33,10 @@ local options = {
     },
     -- A map of action to key that should be used to invoke it
     actions = {
-        split = '-',
-        vertsplit = '|',
+        split = '<C-x>',
+        vertsplit = '<C-v>',
         tabsplit = ']',
-        delete = '<Space>',
+        delete = 'x',
         priority = '=',
     },
 }
@@ -45,4 +44,5 @@ local options = {
 require('reach').buffers(options)
 
 -- Example keymapping
-vim.keymap.set('n', '<leader>r', function() require('reach').buffers(buffer_options) end, {})
+-- vim.keymap.set('n', '<leader>R', function() require('reach').buffers(buffer_options) end, {})
+vim.keymap.set('n', '<leader>r', function() require('reach').buffers(options) end, {})

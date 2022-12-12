@@ -69,7 +69,7 @@ keymap("n", "<C-j>", ":resize +2<CR>", opts)
 
 -- Nvim Tree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
+-- keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
 keymap("n", "<leader>N", ":NvimTreeFindFile<CR>", opts)
 
 -- Terminal

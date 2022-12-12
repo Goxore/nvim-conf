@@ -346,6 +346,8 @@ return require('packer').startup(function(use)
         requires = "anuvyklack/middleclass"
     }
 
+    use "toppair/reach.nvim"
+
     -- use {
     --     "folke/which-key.nvim",
     --     config = function()
