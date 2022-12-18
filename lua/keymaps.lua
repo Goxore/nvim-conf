@@ -7,12 +7,24 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- general
+keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+-- keymap("n", "<C-d>", "<C-d>zz", opts)
+-- keymap("n", "<C-u>", "<C-u>zz", opts)
+
+keymap("x", "<leader>p", "\"_dp", opts)
+
+keymap("i", "<M-h>", "<Left>", opts)
+keymap("i", "<M-l>", "<Right>", opts)
 
 -- Better window navigation
 keymap("n", "<A-h>", "<C-w>h", opts)
 keymap("n", "<A-j>", "<C-w>j", opts)
 keymap("n", "<A-k>", "<C-w>k", opts)
 keymap("n", "<A-l>", "<C-w>l", opts)
+keymap("n", "<A-w>", "<C-w><C-w>", opts)
 keymap('n', "<A-f>", "<cmd>WindowsMaximize<CR>", opts)
 
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
@@ -72,13 +84,17 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 -- keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
 keymap("n", "<leader>N", ":NvimTreeFindFile<CR>", opts)
 
+-- UndoTree
+keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
+
 -- Terminal
 keymap("t", "<esc>", [[<C-\><C-n>]], opts)
 keymap("n", "<leader>G", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>t", "<cmd>lua _MYTERM_TOGGLE()<CR>", { noremap = true, silent = true })
--- keymap("t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
--- keymap("t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
--- keymap("t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+keymap("t", "<A-h>", [[<C-\><C-n><C-W>h]], opts)
+keymap("t", "<A-j>", [[<C-\><C-n><C-W>j]], opts)
+keymap("t", "<A-k>", [[<C-\><C-n><C-W>k]], opts)
+keymap("t", "<A-l>", [[<C-\><C-n><C-W>l]], opts)
 
 -- snippet
 keymap("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/luasnipconf.lua<CR>", opts)
@@ -98,7 +114,6 @@ keymap("n", "vih", "<cmd>Gitsigns select_hunk<CR>", opts)
 keymap("n", "<F2>", "<cmd>Lspsaga rename<CR>", opts)
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 keymap("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
-keymap("v", "K", "", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)

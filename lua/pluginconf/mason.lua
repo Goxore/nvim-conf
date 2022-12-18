@@ -22,7 +22,7 @@ sign define DiagnosticSignHint text=▌ texthl=DiagnosticSignHint linehl= numhl=
 local on_attach = function(client, bufnr)
     bufmap(bufnr, 'n', 'gu', '<cmd>Telescope lsp_references layout_strategy=vertical<CR>', opts)
     bufmap(bufnr, 'n', '<space>F', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
-    bufmap(bufnr, 'v', '<space>F', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+    vim.keymap.set('v', 'F', vim.lsp.buf.format)
     bufmap(bufnr, 'n', '<space>le', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     bufmap(bufnr, 'n', 'gE', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
     bufmap(bufnr, 'n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)

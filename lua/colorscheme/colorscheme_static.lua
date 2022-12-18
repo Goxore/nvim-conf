@@ -4,6 +4,7 @@ local hi = require("core").hi
 local getFg = require("core").getFg
 local getBg = require("core").getBg
 local darker = require("core").darker
+local lerp = require("core").lerp
 local syscolors = require("systemcolors")
 local style = require("core").style
 
@@ -64,7 +65,7 @@ function M.setup(colors)
 
     vim.cmd [[
         set laststatus=3
-        set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
+        set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾,diff:╱
         " set fillchars=fold:\ ,vert:\▎,eob:\ ,msgsep:‾
         " set fillchars=fold:\ ,vert:\ ,eob:\ ,msgsep:\ 
     ]]
@@ -125,6 +126,10 @@ function M.setup(colors)
     hi('GitSignsChange', blue, "transparent")
     hi('GitSignsDelete', red, "transparent")
     hi('GitSignsDelete', red, "transparent")
+
+    hi('DiffAdd', green ,lerp(bgcolor, green, 0.15))
+    hi('DiffChange', blue ,lerp(bgcolor, blue, 0.15))
+    hi('DiffDelete', red ,lerp(bgcolor, red, 0.15))
 
     -- fg('lualine_b_diff_added_normal', green)
     -- fg('lualine_b_diff_modified_normal', blue)

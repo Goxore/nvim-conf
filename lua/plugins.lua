@@ -348,6 +348,8 @@ return require('packer').startup(function(use)
 
     use "toppair/reach.nvim"
 
+    use "mbbill/undotree"
+
     -- use {
     --     "folke/which-key.nvim",
     --     config = function()

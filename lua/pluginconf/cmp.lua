@@ -26,22 +26,23 @@ if nvim_autopairs_status_ok then
               handler = handlers["*"]
             }
           },
-          lua = {
+          cs = {
             ["("] = {
               kind = {
                 cmp.lsp.CompletionItemKind.Function,
                 cmp.lsp.CompletionItemKind.Method
               },
-              ---@param char string
-              ---@param item item completion
-              ---@param bufnr buffer number
               handler = function(char, item, bufnr)
-                -- Your handler function. Inpect with print(vim.inspect{char, item, bufnr})
+                DEBUG={char, item, bufnr}
+                if string.match(item.label, '<')  then
+                    vim.cmd("norm!a<>()")
+                else
+                    handlers["*"](char,item, bufnr)
+                end
               end
             }
           },
-          -- Disable for tex
-          tex = false
+          -- tex = false
         }
       })
     )

@@ -33,6 +33,7 @@ toggleterm.setup {
 function _G.set_terminal_keymaps()
     local opts = { noremap = true, silent = true }
     keymap('t', '<C-w>', '<cmd>lua _MYTERM_TOGGLE()<CR>', opts)
+    keymap('t', '<C-c>', '<cmd>lua _MYTERM_TOGGLE()<CR>', opts)
 end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")

@@ -20,6 +20,7 @@ M.base0D = "#a6e3a1"
 M.base0E = "#e78284"
 M.base0F = "#ef9f76"
 
+M.red = "#e78284"
 M.green = "#a6d189"
 M.magenta = "#ca9ee6"
 M.blue = "#8caaee"

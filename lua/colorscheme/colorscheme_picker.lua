@@ -23,13 +23,14 @@ local mini_layout = {
 
 local function enter(prompt_bufnr)
     local selected = action_state.get_selected_entry()
-
-    setcolors(require("colorscheme.colorscheme_colors." .. selected[1]))
+    colorscheme_global = selected[1]
+    -- setcolors(require("colorscheme.colorscheme_colors." .. selected[1]))
+    vim.cmd("colorscheme nicetheme")
     actions.close(prompt_bufnr)
 end
 
 local opts = {
-    finder = finders.new_table { "gruvbox", "onedark", "tokyonight", "everforest", "dracula", "code", "catpuccin", "nord" },
+    finder = finders.new_table { "gruvbox", "onedark", "tokyonight", "everforest", "dracula", "code", "catpuccin", "nord", "oxocarbon" },
     sorter = sorters.get_generic_fuzzy_sorter({}),
 
     attach_mappings = function(prompt_bufnr, map)

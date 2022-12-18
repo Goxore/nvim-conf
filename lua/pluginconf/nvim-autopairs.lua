@@ -9,7 +9,8 @@ local cond = require('nvim-autopairs.conds')
 npairs.setup()
 
 npairs.add_rule(Rule("$$","$$","tex"))
--- npairs.add_rule(Rule("=","=","vimwiki"))
+
+-- npairs.add_rule(Rule("<",">","cs"))
 
 npairs.add_rule(
   Rule("=", "=", "vimwiki")

@@ -4,7 +4,7 @@ local bg = require("core").bg
 local darker = require("core").darker
 
 M.setup = function(colors)
-    -- vim.cmd("hi clear")
+    vim.cmd("hi clear")
     -- if vim.fn.exists("syntax_on") then
     --     vim.cmd("syntax reset")
     -- end

@@ -39,7 +39,9 @@ require("pluginconf.mason")
 -- require("other.test")
 
 -- sourcing color scheme adjustments
-require("colorscheme.colorscheme_colors").setup(require("systemcolors"))
+-- require("colorscheme.colorscheme_colors").setup(require("systemcolors"))
+-- vim.api.nvim_command.colorscheme("nicetheme")
+vim.cmd("colorscheme nicetheme")
 require("commands")
 
 -- vim.opt.scroll="10"
