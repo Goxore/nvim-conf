@@ -194,6 +194,8 @@ function M.setup(colors)
     -- nicer icons
     fg("DevIconCs", "#854cc7")
 
+    fg("Directory", blue)
+
     -- fg("BufferLineNumbersSelected", blue)
     -- fg("BufferLineBackground", blue)
 
