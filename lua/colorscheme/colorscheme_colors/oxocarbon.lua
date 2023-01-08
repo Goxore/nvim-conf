@@ -25,10 +25,13 @@ M.red = "#ee5396"
 M.blue = "#82cfff"
 M.cyan = "#3ddbd9"
 M.magenta = "#be95ff"
+M.orange = "#ee5396"
 
 M.special = {
     String = M.green,
     Number = "#be95ff",
+    Float = "#be95ff",
+    Boolean = "#be95ff",
 }
 
 return M

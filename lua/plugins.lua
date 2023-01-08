@@ -238,7 +238,7 @@ return require('packer').startup(function(use)
         config = function()
             require("dapui").setup()
         end,
-        cmd = [[lua require("dapui").open()]]
+        -- cmd = [[lua require("dapui").open()]]
     }
 
     use {

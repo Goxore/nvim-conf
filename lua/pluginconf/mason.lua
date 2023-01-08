@@ -12,7 +12,7 @@ require("mason-lspconfig").setup()
 
 
 vim.cmd [[
-autocmd! CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+" autocmd! CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 sign define DiagnosticSignError text=▌ texthl=DiagnosticSignError linehl= numhl=
 sign define DiagnosticSignWarn text=▌ texthl=DiagnosticSignWarn linehl= numhl=
 sign define DiagnosticSignInfo text=▌ texthl=DiagnosticSignInfo linehl= numhl=
@@ -23,7 +23,7 @@ local on_attach = function(client, bufnr)
     bufmap(bufnr, 'n', 'gu', '<cmd>Telescope lsp_references layout_strategy=vertical<CR>', opts)
     bufmap(bufnr, 'n', '<space>F', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
     vim.keymap.set('v', 'F', vim.lsp.buf.format)
-    bufmap(bufnr, 'n', '<space>le', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+    bufmap(bufnr, 'n', '<space>k', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     bufmap(bufnr, 'n', 'gE', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
     bufmap(bufnr, 'n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
     bufmap(bufnr, 'n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
@@ -56,7 +56,7 @@ local omnisharp_on_attach = function(client, bufnr)
 end
 
 -- standalone lsp
-require'lspconfig'.gdscript.setup{}
+require 'lspconfig'.gdscript.setup {}
 
 -- Mason lsp
 require("mason-lspconfig").setup_handlers({
@@ -84,6 +84,9 @@ require("mason-lspconfig").setup_handlers({
             root_dir = lspconfig.util.root_pattern("*.csproj", "*.sln"),
             on_attach = omnisharp_on_attach,
             capabilities = capabilities,
+            enable_roslyn_analyzers = true,
+            analyze_open_documents_only = true,
+            enable_import_completion = true,
         }
     end,
 

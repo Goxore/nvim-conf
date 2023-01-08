@@ -1,6 +1,7 @@
 local fg = require("core").fg
 local bg = require("core").bg
 local hi = require("core").hi
+local link = require("core").link
 local getFg = require("core").getFg
 local getBg = require("core").getBg
 local darker = require("core").darker
@@ -75,22 +76,40 @@ function M.setup(colors)
     fg("WinSeparator", darker(bgcolor, -10))
 
 
-    fg("CmpItemAbbrDefault", fgcolor)
-    fg("CmpItemMenuDefault", fgcolor)
+    -- fg("CmpItemAbbrDefault", fgcolor)
+    -- fg("CmpItemMenuDefault", fgcolor)
+    --
+    -- fg("CmpItemAbbrMatch", blue)
+    -- fg("CmpItemAbbrMatchFuzzy", magenta)
+    --
+    -- fg("CmpItemKindVariable", green)
+    -- fg("CmpItemKindInterface", yellow)
+    -- fg("CmpItemKindText", blue)
+    --
+    -- fg("CmpItemKindFunction", red)
+    -- fg("CmpItemKindMethod", yellow)
+    --
+    -- fg("CmpItemKindKeyword", orange)
+    -- fg("CmpItemKindProperty", magenta)
+    -- fg("CmpItemKindUnit", magenta)
 
-    fg("CmpItemAbbrMatch", blue)
     fg("CmpItemAbbrMatchFuzzy", magenta)
+    fg("CmpItemAbbrMatch", blue)
 
-    fg("CmpItemKindVariable", green)
-    fg("CmpItemKindInterface", yellow)
-    fg("CmpItemKindText", blue)
-
-    fg("CmpItemKindFunction", red)
-    fg("CmpItemKindMethod", yellow)
-
-    fg("CmpItemKindKeyword", orange)
-    fg("CmpItemKindProperty", magenta)
-    fg("CmpItemKindUnit", magenta)
+    link("CmpItemKindMethod", "Function")
+    link("CmpItemKindFunction", "Function")
+    link("CmpItemKindVariable", "Variable")
+    link("CmpItemKindInterface", "Type")
+    link("CmpItemKindEnum", "Type")
+    link("CmpItemKindModule", "Include")
+    link("CmpItemKindKeyword", "Keyword")
+    link("CmpItemKindStruct", "Structure")
+    link("CmpItemKindClass", "String")
+    link("CmpItemKindField", "Variable")
+    link("CmpItemKindUnit", "String")
+    link("CmpItemKindProperty", "String")
+    fg("CmpItemKindText", fgcolor)
+    fg("CmpItemKindText", fgcolor)
 
 
     bg("SignColumn", "transparent")
@@ -117,7 +136,7 @@ function M.setup(colors)
     bg("Search", darker(bgcolor, -20))
 
     hi("DiagnosticWarn", darker(orange, 5), "transparent")
-    hi("DiagnosticHint", darker(fgcolor, -5), "transparent")
+    hi("DiagnosticHint", darker(bgcolor, -35), "transparent")
     hi("DiagnosticError", darker(red, -5), "transparent")
     hi("DiagnosticInfo", darker(blue, -5), "transparent")
 
